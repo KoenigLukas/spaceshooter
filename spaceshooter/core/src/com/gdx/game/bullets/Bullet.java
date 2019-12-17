@@ -32,4 +32,8 @@ public abstract class Bullet extends Rectangle {
     public Texture getTexture() {
         return texture;
     }
+
+    public BulletType getType() {
+        return type;
+    }
 }

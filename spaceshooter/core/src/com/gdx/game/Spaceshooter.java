@@ -6,11 +6,13 @@ import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.gdx.game.bullets.BasicBullet;
 import com.gdx.game.bullets.Bullet;
+import com.gdx.game.bullets.BulletType;
 import com.gdx.game.enemys.BasicEnemy;
 import com.gdx.game.enemys.Enemy;
 import com.gdx.game.enemys.EnemyType;
@@ -23,10 +25,12 @@ import java.util.LinkedList;
 public class Spaceshooter extends ApplicationAdapter {
     SpriteBatch batch;
 
-    Texture shipImg;
-    Texture basicBulletImg;
-    Texture basicEnemyImg;
+    private Texture shipImg;
+    private Texture basicBulletImg;
+    private Texture basicEnemyImg;
 	private Texture background;
+
+	BitmapFont scoreBoard;
 
     SpaceShip ship;
 	
@@ -38,7 +42,7 @@ public class Spaceshooter extends ApplicationAdapter {
     long lastBulletSpawn;
     long lastEnemySpawn;
 
-    Integer score;
+    Integer score = 0;
 
     private OrthographicCamera camera;
 
@@ -54,6 +58,8 @@ public class Spaceshooter extends ApplicationAdapter {
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 1280, 720);
 
+        scoreBoard = new BitmapFont();
+
         ship = new BasicSpaceShip(20, (camera.viewportHeight / 2), shipImg);
 
     }
@@ -65,8 +71,10 @@ public class Spaceshooter extends ApplicationAdapter {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
+
 		batch.draw(background,0, 0, srcx, 0, (int)camera.viewportWidth , (int)camera.viewportHeight);
 		srcx +=2;
+
         batch.draw(shipImg, ship.x, ship.y);
 
         if (TimeUtils.nanoTime() - lastEnemySpawn > 1000000000) spawnEnemy(EnemyType.BASIC);
@@ -74,6 +82,9 @@ public class Spaceshooter extends ApplicationAdapter {
         moveEnemy();
         moveBullets();
         checkBulletImpact();
+        checkEnemyHit();
+
+
 
         for (Bullet bullet : bullets) {
             batch.draw(bullet.getTexture(), bullet.x, bullet.y);
@@ -81,6 +92,12 @@ public class Spaceshooter extends ApplicationAdapter {
         for (Enemy enemy : enemys) {
             batch.draw(enemy.getTexture(), enemy.x, enemy.y);
         }
+
+        String text;
+        text = "Score: "+score+" Lifes: "+ship.getLifes();
+        scoreBoard.draw(batch, text,10,camera.viewportHeight-10);
+        scoreBoard.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
+        scoreBoard.getData().setScale(3,3);
 
         batch.end();
     }
@@ -99,12 +116,28 @@ public class Spaceshooter extends ApplicationAdapter {
             ship.x -= 600 * Gdx.graphics.getDeltaTime() + ship.getMovSpeedFactor();
         }
         if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
-            if (TimeUtils.nanoTime() - lastBulletSpawn > 300000000) spawnBullet();
+            if (TimeUtils.nanoTime() - lastBulletSpawn > 300000000) spawnBullet(BulletType.BASIC);
         }
+
 		if (ship.x<0) ship.x=0;
 		if (ship.y>camera.viewportHeight-ship.height) ship.y=camera.viewportHeight-ship.height;
 		if (ship.y<0) ship.y=0;
 		if (ship.x>camera.viewportWidth- ship.width) ship.x=camera.viewportWidth- ship.width;
+    }
+
+    private void checkEnemyHit(){
+        Iterator<Enemy> it = enemys.iterator();
+        while(it.hasNext()){
+            Enemy enemy = it.next();
+            if(enemy.overlaps(ship)){
+                it.remove();
+                ship.deductLife(1);
+                score += 10;
+            } else if(enemy.x <= 0){
+                it.remove();
+                ship.deductLife(1);
+            }
+        }
     }
 
     private void moveBullets() {
@@ -113,22 +146,24 @@ public class Spaceshooter extends ApplicationAdapter {
         }
     }
 
-    private void spawnBullet() {
+    private void spawnBullet(BulletType type) {
         lastBulletSpawn = TimeUtils.nanoTime();
-        Bullet bullet = new BasicBullet(ship.x, ship.y, basicBulletImg);
-        bullets.add(bullet);
+        if(type == BulletType.BASIC){
+            Bullet bullet = new BasicBullet(ship.x, ship.y, basicBulletImg);
+            bullets.add(bullet);
+        }
     }
 
     private void moveEnemy() {
         for (Enemy enemy : enemys) {
-            enemy.moveEnemy();
+            enemy.moveEnemy(score);
         }
     }
 
     private void spawnEnemy(EnemyType type) {
         lastEnemySpawn = TimeUtils.nanoTime();
         if (type == EnemyType.BASIC) {
-            Enemy enemy = new BasicEnemy(camera.viewportWidth, (MathUtils.random(0, camera.viewportHeight - 32)), basicEnemyImg);
+            Enemy enemy = new BasicEnemy(camera.viewportWidth, (MathUtils.random(0, camera.viewportHeight - 64)), basicEnemyImg);
             enemys.add(enemy);
         }
     }
@@ -145,6 +180,7 @@ public class Spaceshooter extends ApplicationAdapter {
                     bit.remove();
                     if (tmpenemy.getLifes() == 0) {
                         eit.remove();
+                        score+=10;
                     }
                 }
             }

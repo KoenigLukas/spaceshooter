@@ -19,7 +19,7 @@ public abstract class Enemy extends Rectangle {
         this.type = type;
     }
 
-    public abstract void moveEnemy();
+    public abstract void moveEnemy(int score);
     public abstract void shootBullet();
 
     public void deductLife(int damage){
