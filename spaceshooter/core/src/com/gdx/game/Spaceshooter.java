@@ -13,6 +13,7 @@ import com.badlogic.gdx.utils.TimeUtils;
 import com.gdx.game.bullets.BasicBullet;
 import com.gdx.game.bullets.Bullet;
 import com.gdx.game.bullets.BulletType;
+import com.gdx.game.bullets.ShotgunBullet;
 import com.gdx.game.enemys.BasicEnemy;
 import com.gdx.game.enemys.Enemy;
 import com.gdx.game.enemys.EnemyType;
@@ -29,6 +30,7 @@ public class Spaceshooter extends ApplicationAdapter {
     private Texture basicBulletImg;
     private Texture basicEnemyImg;
 	private Texture background;
+    private Texture shotgunBulletImg;
 
 	BitmapFont scoreBoard;
 
@@ -54,6 +56,7 @@ public class Spaceshooter extends ApplicationAdapter {
         shipImg = new Texture("spaceship.png");
         basicBulletImg = new Texture("bullet.png");
         basicEnemyImg = new Texture("enemy.png");
+        shotgunBulletImg = new Texture("bullet.png");
 
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 1280, 720);
@@ -116,7 +119,7 @@ public class Spaceshooter extends ApplicationAdapter {
             ship.x -= 600 * Gdx.graphics.getDeltaTime() + ship.getMovSpeedFactor();
         }
         if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
-            if (TimeUtils.nanoTime() - lastBulletSpawn > 300000000) spawnBullet(BulletType.BASIC);
+            if (TimeUtils.nanoTime() - lastBulletSpawn > 900000000) spawnBullet(BulletType.SHOTGUN);
         }
 
 		if (ship.x<0) ship.x=0;
@@ -148,10 +151,20 @@ public class Spaceshooter extends ApplicationAdapter {
 
     private void spawnBullet(BulletType type) {
         lastBulletSpawn = TimeUtils.nanoTime();
-        if(type == BulletType.BASIC){
+        if(type == BulletType.BASIC) {
             Bullet bullet = new BasicBullet(ship.x, ship.y, basicBulletImg);
-            bullets.add(bullet);
+            bullets.add(bullet);                                                            //2 Mal bullets.add --> verbessern?
+        }else if(type == BulletType.SHOTGUN) {
+            Bullet bullet = new ShotgunBullet(ship.x, ship.y,shotgunBulletImg,0);
+            Bullet bullet2 = ((ShotgunBullet) bullet).getBullet2();
+            Bullet bullet3 = ((ShotgunBullet) bullet).getBullet3();
+
+            bullets.add(bullet);        //und hier
+            bullets.add(bullet2);
+            bullets.add(bullet3);
+
         }
+
     }
 
     private void moveEnemy() {
@@ -172,6 +185,7 @@ public class Spaceshooter extends ApplicationAdapter {
         Iterator<Bullet> bit = bullets.iterator();
         while (bit.hasNext()) {
             Bullet tmpbullet = bit.next();
+            if(tmpbullet.x>camera.viewportWidth||tmpbullet.y>camera.viewportHeight||tmpbullet.y<0)bit.remove();
             Iterator<Enemy> eit = enemys.iterator();
             while (eit.hasNext()) {
                 Enemy tmpenemy = eit.next();
