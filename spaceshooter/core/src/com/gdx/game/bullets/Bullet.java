@@ -17,6 +17,7 @@ public abstract class Bullet extends Rectangle {
         this.movSpeedFactor = movSpeedFactor;
         this.texture = texture;
         this.type = type;
+
     }
 
     public abstract void moveBullet();
@@ -36,4 +37,5 @@ public abstract class Bullet extends Rectangle {
     public BulletType getType() {
         return type;
     }
+
 }

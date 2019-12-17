@@ -26,14 +26,14 @@ public class Spaceshooter extends ApplicationAdapter {
     private Texture shipImg;
     private Texture basicBulletImg;
     private Texture basicEnemyImg;
-	private Texture background;
+    private Texture background;
     private Texture shotgunBulletImg;
 
-	BitmapFont scoreBoard;
+    BitmapFont scoreBoard;
 
     SpaceShip ship;
-	
-	int srcx = 0;
+
+    int srcx = 0;
 
     LinkedList<Bullet> bullets = new LinkedList<>();
     LinkedList<Enemy> enemys = new LinkedList<>();
@@ -48,8 +48,8 @@ public class Spaceshooter extends ApplicationAdapter {
     @Override
     public void create() {
         batch = new SpriteBatch();
-		background = new Texture("background.png");
-		background.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
+        background = new Texture("background.png");
+        background.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
         shipImg = new Texture("spaceship.png");
         basicBulletImg = new Texture("bullet.png");
         basicEnemyImg = new Texture("enemy.png");
@@ -72,19 +72,17 @@ public class Spaceshooter extends ApplicationAdapter {
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
 
-		batch.draw(background,0, 0, srcx, 0, (int)camera.viewportWidth , (int)camera.viewportHeight);
-		srcx +=2;
+        batch.draw(background, 0, 0, srcx, 0, (int) camera.viewportWidth, (int) camera.viewportHeight);
+        srcx += 2;
 
         batch.draw(shipImg, ship.x, ship.y);
 
-        if (TimeUtils.nanoTime() - lastEnemySpawn > 1000000000) spawnEnemy(EnemyType.BASIC);
+        if (TimeUtils.nanoTime() - lastEnemySpawn > 1000000000 - score) spawnEnemy(EnemyType.BASIC);
 
         moveEnemy();
         moveBullets();
         checkBulletImpact();
         checkEnemyHit();
-
-
 
         for (Bullet bullet : bullets) {
             batch.draw(bullet.getTexture(), bullet.x, bullet.y);
@@ -94,20 +92,20 @@ public class Spaceshooter extends ApplicationAdapter {
         }
 
         String text;
-        text = "Score: "+score+" Lifes: "+ship.getLifes();
-        scoreBoard.draw(batch, text,10,camera.viewportHeight-10);
+        text = "Score: " + score + " Lifes: " + ship.getLifes();
+        scoreBoard.draw(batch, text, 10, camera.viewportHeight - 10);
         scoreBoard.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
-        scoreBoard.getData().setScale(3,3);
+        scoreBoard.getData().setScale(3, 3);
 
         batch.end();
     }
 
     private void handleInput() {
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-            ship.y -= 600 * Gdx.graphics.getDeltaTime() + ship.getMovSpeedFactor();
+            ship.y -= 650 * Gdx.graphics.getDeltaTime() + ship.getMovSpeedFactor();
         }
         if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
-            ship.y += 600 * Gdx.graphics.getDeltaTime() + ship.getMovSpeedFactor();
+            ship.y += 650 * Gdx.graphics.getDeltaTime() + ship.getMovSpeedFactor();
         }
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
             ship.x += 600 * Gdx.graphics.getDeltaTime() + ship.getMovSpeedFactor();
@@ -116,24 +114,24 @@ public class Spaceshooter extends ApplicationAdapter {
             ship.x -= 600 * Gdx.graphics.getDeltaTime() + ship.getMovSpeedFactor();
         }
         if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
-            if (TimeUtils.nanoTime() - lastBulletSpawn > 900000000) spawnBullet(BulletType.SHOTGUN);
+            if (TimeUtils.nanoTime() - lastBulletSpawn > BulletType.BASIC.getDelay()) spawnBullet(BulletType.BASIC);
         }
 
-		if (ship.x<0) ship.x=0;
-		if (ship.y>camera.viewportHeight-ship.height) ship.y=camera.viewportHeight-ship.height;
-		if (ship.y<0) ship.y=0;
-		if (ship.x>camera.viewportWidth- ship.width) ship.x=camera.viewportWidth- ship.width;
+        if (ship.x < 0) ship.x = 0;
+        if (ship.y > camera.viewportHeight - ship.height) ship.y = camera.viewportHeight - ship.height;
+        if (ship.y < 0) ship.y = 0;
+        if (ship.x > camera.viewportWidth - ship.width) ship.x = camera.viewportWidth - ship.width;
     }
 
-    private void checkEnemyHit(){
+    private void checkEnemyHit() {
         Iterator<Enemy> it = enemys.iterator();
-        while(it.hasNext()){
+        while (it.hasNext()) {
             Enemy enemy = it.next();
-            if(enemy.overlaps(ship)){
+            if (enemy.overlaps(ship)) {
                 it.remove();
                 ship.deductLife(1);
                 score += 10;
-            } else if(enemy.x <= 0){
+            } else if (enemy.x <= 0) {
                 it.remove();
                 ship.deductLife(1);
             }
@@ -148,17 +146,16 @@ public class Spaceshooter extends ApplicationAdapter {
 
     private void spawnBullet(BulletType type) {
         lastBulletSpawn = TimeUtils.nanoTime();
-        if(type == BulletType.BASIC) {
+        if (type == BulletType.BASIC) {
             Bullet bullet = new BasicBullet(ship.x, ship.y, basicBulletImg);
-            bullets.add(bullet);                                                          
-        }else if(type == BulletType.SHOTGUN) {
-            Bullet bullet = new ShotgunBullet(ship.x, ship.y,shotgunBulletImg, BulletDirection.STRAIGHT);
-            Bullet bullet2 = new ShotgunBullet(ship.x, ship.y,shotgunBulletImg, BulletDirection.DIAGONALUP);
-            Bullet bullet3 = new ShotgunBullet(ship.x, ship.y,shotgunBulletImg, BulletDirection.DIAGONALDOWN);
+            bullets.add(bullet);
+        } else if (type == BulletType.SHOTGUN) {
+            Bullet bullet = new ShotgunBullet(ship.x, ship.y, shotgunBulletImg, BulletDirection.STRAIGHT);
+            Bullet bullet2 = new ShotgunBullet(ship.x, ship.y, shotgunBulletImg, BulletDirection.DIAGONALUP);
+            Bullet bullet3 = new ShotgunBullet(ship.x, ship.y, shotgunBulletImg, BulletDirection.DIAGONALDOWN);
             bullets.add(bullet);
             bullets.add(bullet2);
             bullets.add(bullet3);
-
         }
 
     }
@@ -181,7 +178,8 @@ public class Spaceshooter extends ApplicationAdapter {
         Iterator<Bullet> bit = bullets.iterator();
         while (bit.hasNext()) {
             Bullet tmpbullet = bit.next();
-            if(tmpbullet.x>camera.viewportWidth||tmpbullet.y>camera.viewportHeight||tmpbullet.y<0)bit.remove();
+            if (tmpbullet.x > camera.viewportWidth || tmpbullet.y > camera.viewportHeight || tmpbullet.y < 0)
+                bit.remove();
             Iterator<Enemy> eit = enemys.iterator();
             while (eit.hasNext()) {
                 Enemy tmpenemy = eit.next();
@@ -190,13 +188,12 @@ public class Spaceshooter extends ApplicationAdapter {
                     bit.remove();
                     if (tmpenemy.getLifes() == 0) {
                         eit.remove();
-                        score+=10;
+                        score += 10;
                     }
                 }
             }
         }
     }
-
 
 
     @Override

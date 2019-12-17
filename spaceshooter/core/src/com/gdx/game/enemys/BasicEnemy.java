@@ -11,7 +11,7 @@ public class BasicEnemy extends Enemy {
 
     @Override
     public void moveEnemy(int score) {
-        this.x -=300* Gdx.graphics.getDeltaTime()+movSpeedFactor+(score/500);
+        this.x -=300* Gdx.graphics.getDeltaTime()+movSpeedFactor+(score/350);
     }
 
     @Override

@@ -14,15 +14,14 @@ public class ShotgunBullet extends Bullet {
 
     @Override
     public void moveBullet() {
-        if(direction == BulletDirection.STRAIGHT){
+        if (direction == BulletDirection.STRAIGHT) {
             this.x += 100 * Gdx.graphics.getDeltaTime() + movSpeedFactor;
-        }
-        else if(direction == BulletDirection.DIAGONALUP){
+        } else if (direction == BulletDirection.DIAGONALUP) {
             this.x += 100 * Gdx.graphics.getDeltaTime() + movSpeedFactor;
-            this.y += 30*Gdx.graphics.getDeltaTime()+movSpeedFactor;
-        } else if(direction == BulletDirection.DIAGONALDOWN){
+            this.y += 30 * Gdx.graphics.getDeltaTime() + movSpeedFactor;
+        } else if (direction == BulletDirection.DIAGONALDOWN) {
             this.x += 100 * Gdx.graphics.getDeltaTime() + movSpeedFactor;
-            this.y -= 30*Gdx.graphics.getDeltaTime()+movSpeedFactor;
+            this.y -= 30 * Gdx.graphics.getDeltaTime() + movSpeedFactor;
         }
     }
 
