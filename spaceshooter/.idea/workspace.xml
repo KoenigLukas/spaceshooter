@@ -2,29 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="72fd10f6-0531-4a31-8f45-222acbc71b39" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/core/src/com/gdx/game/bullets/BulletType.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/gdx/game/enemys/EnemyType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/jarAnalysis.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/build/libs/core-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/libs/core-1.0.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/com/gdx/game/Spaceshooter.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/gdx/game/Spaceshooter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/gdx/game/bullets/BasicBullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/gdx/game/bullets/BasicBullet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/gdx/game/bullets/Bullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/gdx/game/bullets/Bullet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/gdx/game/enemys/BasicEnemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/gdx/game/enemys/BasicEnemy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/gdx/game/enemys/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/gdx/game/enemys/Enemy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/gdx/game/spaceships/BasicSpaceShip.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/gdx/game/spaceships/BasicSpaceShip.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/gdx/game/spaceships/SpaceShip.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/gdx/game/spaceships/SpaceShip.java" afterDir="false" />
     </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -93,7 +74,19 @@
     <property name="project.structure.last.edited" value="Project" />
     <property name="project.structure.proportion" value="0.0" />
     <property name="project.structure.side.proportion" value="0.0" />
-    <property name="settings.editor.selected.configurable" value="preferences.keymap" />
+    <property name="settings.editor.selected.configurable" value="reference.settingsdialog.project.gradle" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
   </component>
   <component name="RunManager" selected="Application.DesktopLauncher">
     <configuration name="DesktopLauncher" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
@@ -195,18 +188,6 @@
       </list>
     </recent_temporary>
   </component>
-  <component name="ServiceViewManager">
-    <option name="viewStates">
-      <list>
-        <serviceView>
-          <treeState>
-            <expand />
-            <select />
-          </treeState>
-        </serviceView>
-      </list>
-    </option>
-  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -224,11 +205,26 @@
       <workItem from="1575961500456" duration="49000" />
       <workItem from="1576575087608" duration="3156000" />
       <workItem from="1576579775880" duration="899000" />
+      <workItem from="1576592833146" duration="28000" />
+      <workItem from="1576593218319" duration="2000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="1" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
   </component>
   <component name="WindowStateProjectService">
     <state x="492" y="52" width="578" height="639" key="#DesktopLauncher" timestamp="1576579933611">

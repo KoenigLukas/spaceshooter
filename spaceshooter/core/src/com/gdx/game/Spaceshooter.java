@@ -26,8 +26,11 @@ public class Spaceshooter extends ApplicationAdapter {
     Texture shipImg;
     Texture basicBulletImg;
     Texture basicEnemyImg;
+	private Texture background;
 
     SpaceShip ship;
+	
+	int srcx = 0;
 
     LinkedList<Bullet> bullets = new LinkedList<>();
     LinkedList<Enemy> enemys = new LinkedList<>();
@@ -42,6 +45,8 @@ public class Spaceshooter extends ApplicationAdapter {
     @Override
     public void create() {
         batch = new SpriteBatch();
+		background = new Texture("background.png");
+		background.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
         shipImg = new Texture("spaceship.png");
         basicBulletImg = new Texture("bullet.png");
         basicEnemyImg = new Texture("enemy.png");
@@ -60,6 +65,8 @@ public class Spaceshooter extends ApplicationAdapter {
         Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
+		batch.draw(background,0, 0, srcx, 0, (int)camera.viewportWidth , (int)camera.viewportHeight);
+		srcx +=2;
         batch.draw(shipImg, ship.x, ship.y);
 
         if (TimeUtils.nanoTime() - lastEnemySpawn > 1000000000) spawnEnemy(EnemyType.BASIC);
@@ -94,6 +101,10 @@ public class Spaceshooter extends ApplicationAdapter {
         if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
             if (TimeUtils.nanoTime() - lastBulletSpawn > 300000000) spawnBullet();
         }
+		if (ship.x<0) ship.x=0;
+		if (ship.y>camera.viewportHeight-ship.height) ship.y=camera.viewportHeight-ship.height;
+		if (ship.y<0) ship.y=0;
+		if (ship.x>camera.viewportWidth- ship.width) ship.x=camera.viewportWidth- ship.width;
     }
 
     private void moveBullets() {
