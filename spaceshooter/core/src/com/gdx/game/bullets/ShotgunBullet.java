@@ -5,39 +5,25 @@ import com.badlogic.gdx.graphics.Texture;
 
 public class ShotgunBullet extends Bullet {
 
-    private int bulletCount;                            //für 3 verschiedene Richtungen zum unterscheiden
-    private ShotgunBullet bullet2;
-    private ShotgunBullet bullet3;
+    BulletDirection direction;
 
-    public ShotgunBullet(float x, float y, Texture texture, int bulletCount) {
+    public ShotgunBullet(float x, float y, Texture texture, BulletDirection direction) {
         super(x, y, 32, 32, 2, 1, BulletType.SHOTGUN, texture);
-        this.bulletCount=bulletCount;
-        if(bulletCount==0){
-            bulletCount++;
-            bullet2 = new ShotgunBullet(x,y,texture,bulletCount);
-            bulletCount++;
-            bullet3 = new ShotgunBullet(x,y,texture,bulletCount);
-        }
+        this.direction = direction;
     }
 
     @Override
     public void moveBullet() {
-        this.x += 100 * Gdx.graphics.getDeltaTime() + movSpeedFactor;
-        System.out.println(bulletCount);
-        if(bulletCount==1){
-            this.y += 75*Gdx.graphics.getDeltaTime()+movSpeedFactor;
-        }else if(bulletCount==2){
-            this.y -= 75*Gdx.graphics.getDeltaTime()+movSpeedFactor;
+        if(direction == BulletDirection.STRAIGHT){
+            this.x += 100 * Gdx.graphics.getDeltaTime() + movSpeedFactor;
         }
-    }
-
-
-    public ShotgunBullet getBullet2(){
-        return bullet2;
-    }
-
-    public ShotgunBullet getBullet3(){
-        return bullet3;
+        else if(direction == BulletDirection.DIAGONALUP){
+            this.x += 100 * Gdx.graphics.getDeltaTime() + movSpeedFactor;
+            this.y += 30*Gdx.graphics.getDeltaTime()+movSpeedFactor;
+        } else if(direction == BulletDirection.DIAGONALDOWN){
+            this.x += 100 * Gdx.graphics.getDeltaTime() + movSpeedFactor;
+            this.y -= 30*Gdx.graphics.getDeltaTime()+movSpeedFactor;
+        }
     }
 
 }

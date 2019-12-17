@@ -10,10 +10,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.TimeUtils;
-import com.gdx.game.bullets.BasicBullet;
-import com.gdx.game.bullets.Bullet;
-import com.gdx.game.bullets.BulletType;
-import com.gdx.game.bullets.ShotgunBullet;
+import com.gdx.game.bullets.*;
 import com.gdx.game.enemys.BasicEnemy;
 import com.gdx.game.enemys.Enemy;
 import com.gdx.game.enemys.EnemyType;
@@ -153,13 +150,12 @@ public class Spaceshooter extends ApplicationAdapter {
         lastBulletSpawn = TimeUtils.nanoTime();
         if(type == BulletType.BASIC) {
             Bullet bullet = new BasicBullet(ship.x, ship.y, basicBulletImg);
-            bullets.add(bullet);                                                            //2 Mal bullets.add --> verbessern?
+            bullets.add(bullet);                                                          
         }else if(type == BulletType.SHOTGUN) {
-            Bullet bullet = new ShotgunBullet(ship.x, ship.y,shotgunBulletImg,0);
-            Bullet bullet2 = ((ShotgunBullet) bullet).getBullet2();
-            Bullet bullet3 = ((ShotgunBullet) bullet).getBullet3();
-
-            bullets.add(bullet);        //und hier
+            Bullet bullet = new ShotgunBullet(ship.x, ship.y,shotgunBulletImg, BulletDirection.STRAIGHT);
+            Bullet bullet2 = new ShotgunBullet(ship.x, ship.y,shotgunBulletImg, BulletDirection.DIAGONALUP);
+            Bullet bullet3 = new ShotgunBullet(ship.x, ship.y,shotgunBulletImg, BulletDirection.DIAGONALDOWN);
+            bullets.add(bullet);
             bullets.add(bullet2);
             bullets.add(bullet3);
 
