@@ -6,20 +6,25 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.gdx.game.spaceships.BasicSpaceShip;
+import com.gdx.game.spaceships.SpaceShip;
 
 public class Spaceshooter extends ApplicationAdapter {
 	SpriteBatch batch;
-	Texture img;
+	Texture shipImg;
+	SpaceShip ship;
 
 	private OrthographicCamera camera;
 	
 	@Override
 	public void create () {
 		batch = new SpriteBatch();
-		img = new Texture("badlogic.jpg");
+		shipImg = new Texture("spaceship.png");
 
 		camera = new OrthographicCamera();
 		camera.setToOrtho(false, 1280, 720);
+
+		ship = new BasicSpaceShip(20,(camera.viewportHeight / 2), shipImg);
 
 	}
 
@@ -29,13 +34,13 @@ public class Spaceshooter extends ApplicationAdapter {
 		Gdx.gl.glClear(GL20.GL_COLOR_BUFFER_BIT);
 		batch.setProjectionMatrix(camera.combined);
 		batch.begin();
-		batch.draw(img, 0, 0);
+		batch.draw(shipImg, ship.x, ship.y);
 		batch.end();
 	}
 	
 	@Override
 	public void dispose () {
 		batch.dispose();
-		img.dispose();
+		shipImg.dispose();
 	}
 }

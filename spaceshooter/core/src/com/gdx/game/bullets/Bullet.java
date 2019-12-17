@@ -6,8 +6,8 @@ import com.badlogic.gdx.math.Rectangle;
 public abstract class Bullet extends Rectangle {
 
 
-    private int damage;
-    private float movSpeedFactor;
+    protected int damage;
+    protected float movSpeedFactor;
     private Texture texture;
 
     public Bullet(float x, float y, float width, float height, int damage, float movSpeedFactor,Texture texture) {
@@ -17,7 +17,6 @@ public abstract class Bullet extends Rectangle {
         this.texture = texture;
     }
 
-    public abstract void spawnBullet();
     public abstract void moveBullet();
 
     public int getDamage() {

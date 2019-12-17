@@ -9,13 +9,6 @@ public class BasicBullet extends Bullet {
     }
 
     @Override
-    public void spawnBullet() {
-
-        
-
-    }
-
-    @Override
     public void moveBullet() {
 
     }

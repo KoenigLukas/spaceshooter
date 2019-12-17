@@ -6,8 +6,8 @@ import com.gdx.game.bullets.Bullet;
 
 public abstract class SpaceShip extends Rectangle {
 
-    private float movSpeedFactor;
-    private float lifes;
+    protected float movSpeedFactor;
+    protected float lifes;
     private Texture texture;
 
     public SpaceShip(float x, float y, float width, float height, float movSpeedFactor, float lifes, Texture texture) {
