@@ -1,5 +1,6 @@
 package com.gdx.game.bullets;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 
 public class BasicBullet extends Bullet {
@@ -10,6 +11,6 @@ public class BasicBullet extends Bullet {
 
     @Override
     public void moveBullet() {
-
+        this.x +=300*Gdx.graphics.getDeltaTime();
     }
 }
