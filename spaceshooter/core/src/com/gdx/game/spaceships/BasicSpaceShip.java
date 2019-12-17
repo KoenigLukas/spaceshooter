@@ -9,8 +9,4 @@ public class BasicSpaceShip extends SpaceShip {
         super(x, y, 32, 32, 0, 30, texture);
     }
 
-    @Override
-    public void shootBullet(Bullet bullet) {
-
-    }
 }
