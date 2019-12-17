@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="72fd10f6-0531-4a31-8f45-222acbc71b39" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/core/src/com/gdx/game/bullets/BasicBullet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/gdx/game/bullets/BasicBullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/gdx/game/bullets/BasicBullet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -204,7 +204,7 @@
       <workItem from="1575356545643" duration="30000" />
       <workItem from="1575961500456" duration="49000" />
       <workItem from="1576575087608" duration="3156000" />
-      <workItem from="1576579775880" duration="762000" />
+      <workItem from="1576579775880" duration="899000" />
     </task>
     <servers />
   </component>
