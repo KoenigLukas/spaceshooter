@@ -19,4 +19,16 @@ public abstract class Bullet extends Rectangle {
 
     public abstract void spawnBullet();
     public abstract void moveBullet();
+
+    public int getDamage() {
+        return damage;
+    }
+
+    public float getMovSpeedFactor() {
+        return movSpeedFactor;
+    }
+
+    public Texture getTexture() {
+        return texture;
+    }
 }
