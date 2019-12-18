@@ -10,6 +10,8 @@ public abstract class Enemy extends Rectangle {
     protected int lifes;
     private Texture texture;
     private EnemyType type;
+    private boolean targeted = false;
+    protected float speed;
 
     public Enemy(float x, float y, float width, float height, float movSpeedFactor, int lifes, EnemyType type, Texture texture) {
         super(x, y, width, height);
@@ -41,5 +43,18 @@ public abstract class Enemy extends Rectangle {
 
     public EnemyType getType() {
         return type;
+    }
+
+    public boolean isTargeted() {
+        return targeted;
+    }
+
+    public void setTargeted(boolean targeted) {
+        this.targeted = targeted;
+    }
+
+
+    public float getSpeed() {
+        return speed;
     }
 }
