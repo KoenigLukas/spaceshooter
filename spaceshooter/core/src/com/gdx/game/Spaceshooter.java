@@ -16,6 +16,7 @@ import com.gdx.game.collectables.Weapon;
 import com.gdx.game.enemys.BasicEnemy;
 import com.gdx.game.enemys.Enemy;
 import com.gdx.game.enemys.EnemyType;
+import com.gdx.game.obstacles.Obstacle;
 import com.gdx.game.spaceships.BasicSpaceShip;
 import com.gdx.game.spaceships.SpaceShip;
 
@@ -32,6 +33,7 @@ public class Spaceshooter extends ApplicationAdapter {
     private Texture shotgunBulletImg;
     private Texture homingBulletImg;
     private Texture shotGunWeaponImg;
+    private Texture spaceRockImg;
 
     BitmapFont scoreBoard;
 
@@ -43,11 +45,13 @@ public class Spaceshooter extends ApplicationAdapter {
     LinkedList<Enemy> enemys = new LinkedList<>();
     LinkedList<Weapon> weapons = new LinkedList<>();
     LinkedList<Collectable> collectables = new LinkedList<>();
+    LinkedList<Obstacle> obstacles = new LinkedList<>();
 
     Iterator<Weapon> weaponIterator = weapons.iterator();
 
     long lastBulletSpawn;
     long lastEnemySpawn;
+    long lastObstacleSpawn;
 
     Integer score = 0;
 
@@ -64,6 +68,7 @@ public class Spaceshooter extends ApplicationAdapter {
         shotgunBulletImg = new Texture("bullet.png");
         homingBulletImg = new Texture("homingbullet.png");
         shotGunWeaponImg = new Texture("shotgun.png");
+        spaceRockImg = new Texture("spaceship.png");
 
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 1280, 720);
@@ -88,6 +93,7 @@ public class Spaceshooter extends ApplicationAdapter {
         batch.draw(shipImg, ship.x, ship.y);
 
         if (TimeUtils.nanoTime() - lastEnemySpawn > 1000000000 - score*10000) spawnEnemy(EnemyType.BASIC);
+        if(TimeUtils.nanoTime() - lastObstacleSpawn > 1000000000 - score*10000) spawnObstacle();
 
         moveEnemy();
         moveBullets();
@@ -184,6 +190,10 @@ public class Spaceshooter extends ApplicationAdapter {
             Enemy enemy = new BasicEnemy(camera.viewportWidth, (MathUtils.random(0, camera.viewportHeight - 64)), basicEnemyImg);
             enemys.add(enemy);
         }
+    }
+
+    private void spawnObstacle(){
+        lastObstacleSpawn=TimeUtils.nanoTime();
     }
 
     private void checkBulletImpact() {

@@ -11,35 +11,39 @@ public class HomingBullet extends Bullet {
 
     LinkedList<Enemy> enemyList = new LinkedList<>();
     private boolean targetaquired=false;
+    Iterator<Enemy> enemyIterator;
+    Enemy enemy;
 
     public HomingBullet(float x, float y, BulletType type, Texture texture, LinkedList<Enemy> enemyList) {
         super(x, y, 32, 32, 5, 0, type, texture);
         this.enemyList = enemyList;
+        enemy=null;
+
     }
 
     @Override
     public void moveBullet() {
-        Iterator<Enemy> enemyIterator= enemyList.iterator();
+
+        enemyIterator= enemyList.iterator();
         float proportion=1;
-        Enemy enemy= null;
-        if(enemyIterator.hasNext()) {
+        if(enemyIterator.hasNext()&&(!targetaquired)) {                             //Ersten Enemy zuweisen
             enemy = enemyIterator.next();
         }
 
-        x+=Gdx.graphics.getDeltaTime()*70;
-
-        while (enemy.isTargeted()&&enemyIterator.hasNext()&&!targetaquired){
-            enemy=enemyIterator.next();                         //Check if enemy is targetted
+        while (enemy.isTargeted()&&enemyIterator.hasNext()&&(!targetaquired)){      //Check if enemy is targetted
+            enemy=enemyIterator.next();
         }
-        if(!enemy.isTargeted()) {
+
+        if(!enemy.isTargeted()) {                                                   //Target statements setzen
             targetaquired = true;
             enemy.setTargeted(true);
         }
 
+        x+=Gdx.graphics.getDeltaTime()*enemy.getSpeed()*100;                          //Move x
         if(enemy.y>y){
-            y+=Gdx.graphics.getDeltaTime()*enemy.getSpeed()*100;
+            y+=Gdx.graphics.getDeltaTime()*enemy.getSpeed()*120;                    //Move y
         }else if(enemy.y<y-10){
-            y-=Gdx.graphics.getDeltaTime()*enemy.getSpeed()*100;
+            y-=Gdx.graphics.getDeltaTime()*enemy.getSpeed()*100;                    //Move y
         }
 
 
