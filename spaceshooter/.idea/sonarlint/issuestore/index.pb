@@ -25,3 +25,15 @@ f
 6core/src/com/gdx/game/collectables/weapons/Weapon.java,e\9\e9c7a93e6ec37bd18a0cb5f2336de24c41ad33c1
 _
 /core/src/com/gdx/game/bullets/HomingBullet.java,b\a\bab9c3766219f364769b2e74ad138125aacef623
+]
+-core/src/com/gdx/game/obstacles/Obstacle.java,2\0\202bf7881b1f271690499764f3eeeb0526b1837f
+^
+.core/src/com/gdx/game/obstacles/SpaceRock.java,0\1\01c35f2ef45ef34fa8f8f34bef29f0fd1b7da35a
+d
+4core/src/com/gdx/game/spaceships/BasicSpaceShip.java,0\e\0ef9507ed9da31774d50cf37a244ddddf210c401
+k
+;core/src/com/gdx/game/collectables/weapons/BasicWeapon.java,4\0\403c83e3cbd52a680a0326fc3831172fd07db373
+n
+>core/src/com/gdx/game/collectables/weapons/RocketLauncher.java,f\5\f5105d374539ed167ee6eec8d5b4ef0bd3adcb39
+`
+0core/src/com/gdx/game/holster/WeaponHolster.java,d\2\d270003789c6d9f001e6184c072d9673f07e3d3d

@@ -18,4 +18,9 @@ public abstract class Collectable extends Rectangle {
     public Texture getTexture() {
         return texture;
     }
+
+    public enum CollectableType{
+        SHOTGUN,
+        ROCKETLAUNCHER,
+    }
 }

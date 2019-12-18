@@ -57,4 +57,8 @@ public abstract class Enemy extends Rectangle {
     public float getSpeed() {
         return speed;
     }
+
+    public enum EnemyType {
+        BASIC,
+    }
 }

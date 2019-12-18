@@ -35,4 +35,8 @@ public abstract class  Obstacle extends Rectangle {
     public float getSpeed() {
         return speed;
     }
+
+    public enum ObstacleType {
+        ROCK,
+    }
 }
