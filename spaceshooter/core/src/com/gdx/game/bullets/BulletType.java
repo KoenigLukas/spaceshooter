@@ -3,6 +3,7 @@ package com.gdx.game.bullets;
 public enum BulletType {
     BASIC(500000000),
     SHOTGUN(900000000),
+    HOMINGBULLET(900000000),
     ;
 
     private int delay;

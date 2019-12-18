@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="72fd10f6-0531-4a31-8f45-222acbc71b39" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/core/src/com/gdx/game/bullets/HomingBullet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
@@ -12,15 +13,12 @@
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/build/libs/core-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/libs/core-1.0.jar" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/com/gdx/game/Spaceshooter.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/gdx/game/Spaceshooter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/gdx/game/bullets/BasicBullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/gdx/game/bullets/BasicBullet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/gdx/game/bullets/Bullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/gdx/game/bullets/Bullet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/com/gdx/game/bullets/BulletType.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/gdx/game/bullets/BulletType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/gdx/game/bullets/ShotgunBullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/gdx/game/bullets/ShotgunBullet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/gdx/game/enemys/BasicEnemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/gdx/game/enemys/BasicEnemy.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,8 +65,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Class" />
         <option value="Enum" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -226,6 +224,8 @@
       <workItem from="1576601619062" duration="2972000" />
       <workItem from="1576606659422" duration="689000" />
       <workItem from="1576607945255" duration="3695000" />
+      <workItem from="1576651547984" duration="230000" />
+      <workItem from="1576652037443" duration="2354000" />
     </task>
     <servers />
   </component>
@@ -250,35 +250,39 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="492" y="52" width="578" height="639" key="#DesktopLauncher/0.0.1536.824@0.0.1536.824" timestamp="1576579933611" />
-    <state x="957" y="217" key="#com.intellij.ide.util.MemberChooser" timestamp="1576611950258">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1576652654295">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="223" y="67" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.0.1536.824@0.0.1536.824" timestamp="1576652654295" />
+    <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser" timestamp="1576652848245">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="957" y="217" key="#com.intellij.ide.util.MemberChooser/-1920.348.1536.832/0.0.2560.1400@0.0.2560.1400" timestamp="1576611950258" />
-    <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1576601761533" />
+    <state x="574" y="128" key="#com.intellij.ide.util.MemberChooser/0.0.1536.824@0.0.1536.824" timestamp="1576652848245" />
     <state x="609" y="301" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1576593370078">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="609" y="301" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/0.0.1536.824@0.0.1536.824" timestamp="1576593370078" />
-    <state width="2517" height="124" key="GridCell.Tab.0.bottom" timestamp="1576614840831">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1493" height="54" key="GridCell.Tab.0.bottom" timestamp="1576654413625">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="2517" height="124" key="GridCell.Tab.0.bottom/-1920.348.1536.832/0.0.2560.1400@0.0.2560.1400" timestamp="1576614840831" />
-    <state width="1493" height="124" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1576607349091" />
-    <state width="2517" height="124" key="GridCell.Tab.0.center" timestamp="1576614840830">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1493" height="54" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1576654413625" />
+    <state width="1493" height="54" key="GridCell.Tab.0.center" timestamp="1576654413625">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="2517" height="124" key="GridCell.Tab.0.center/-1920.348.1536.832/0.0.2560.1400@0.0.2560.1400" timestamp="1576614840830" />
-    <state width="1493" height="124" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1576607349091" />
-    <state width="2517" height="124" key="GridCell.Tab.0.left" timestamp="1576614840830">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1493" height="54" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1576654413625" />
+    <state width="1493" height="54" key="GridCell.Tab.0.left" timestamp="1576654413625">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="2517" height="124" key="GridCell.Tab.0.left/-1920.348.1536.832/0.0.2560.1400@0.0.2560.1400" timestamp="1576614840830" />
-    <state width="1493" height="124" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1576607349091" />
-    <state width="2517" height="124" key="GridCell.Tab.0.right" timestamp="1576614840830">
-      <screen x="0" y="0" width="2560" height="1400" />
+    <state width="1493" height="54" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1576654413625" />
+    <state width="1493" height="54" key="GridCell.Tab.0.right" timestamp="1576654413625">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="2517" height="124" key="GridCell.Tab.0.right/-1920.348.1536.832/0.0.2560.1400@0.0.2560.1400" timestamp="1576614840830" />
-    <state width="1493" height="124" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1576607349091" />
+    <state width="1493" height="54" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1576654413625" />
     <state width="1493" height="241" key="GridCell.Tab.1.bottom" timestamp="1576604597487">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -295,6 +299,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state width="1493" height="241" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1576604597487" />
+    <state x="249" y="0" key="SettingsEditor" timestamp="1576652053191">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="249" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1576652053191" />
     <state x="361" y="145" key="Vcs.Push.Dialog.v2" timestamp="1576576556038">
       <screen x="0" y="0" width="1536" height="824" />
     </state>

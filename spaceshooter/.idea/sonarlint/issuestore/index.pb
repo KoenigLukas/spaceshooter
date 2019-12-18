@@ -1,6 +1,6 @@
 
 e
-5desktop/src/com/gdx/game/desktop/DesktopLauncher.java,1\4\144978aa8303f1d57d14d17cb1db946b2c7a77915desktop/src/com/gdx/game/desktop/DesktopLauncher.java,1\4\144978aa8303f1d57d14d17cb1db946b2c7a7791
+5desktop/src/com/gdx/game/desktop/DesktopLauncher.java,1\4\144978aa8303f1d57d14d17cb1db946b2c7a7791
 b
 2core/src/com/gdx/game/bullets/BulletDirection.java,d\a\da1cd1664ae2663c8413186d23860658ebb74c13
 `
