@@ -7,8 +7,6 @@ W
 'core/src/com/gdx/game/Spaceshooter.java,f\8\f8aea62f5088ff46b62e04eb42f9838dfc57d235
 Y
 )core/src/com/gdx/game/bullets/Bullet.java,0\f\0f3af2ade5e44da24019739ebb998ba040f208ea
-]
--core/src/com/gdx/game/bullets/BulletType.java,0\4\04d4e9d99e236e3a691ce5a18d036c73443b4035
 \
 ,core/src/com/gdx/game/enemys/BasicEnemy.java,1\5\15010b5df4f644a08c05e6b0706b278a862a7bec
 ^

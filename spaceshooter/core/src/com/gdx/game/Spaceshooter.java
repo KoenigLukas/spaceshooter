@@ -110,13 +110,13 @@ public class Spaceshooter extends ApplicationAdapter {
         if (TimeUtils.nanoTime() - lastEnemySpawn > 1000000000 - score * 10000) spawnEnemy(Enemy.EnemyType.BASIC);
         if (TimeUtils.nanoTime() - lastObstacleSpawn > 1000000000 - score * 10000) spawnObstacle();
 
-        if (score % 100 == 0 && (TimeUtils.nanoTime() - lastShotGunSpawned > 100000000) && score > 0) {
-            lastShotGunSpawned = TimeUtils.nanoTime();
+        if (score % 100 == 0 && (TimeUtils.millis() - lastShotGunSpawned > 3000) && score > 0) {
+            lastShotGunSpawned = TimeUtils.millis();
             spawnCollectable(Collectable.CollectableType.SHOTGUN, 50);
         }
 
-        if (score % 400 == 0 && (TimeUtils.nanoTime() - lastRocketLauncherSpawned > 100000000) && score > 0) {
-            lastRocketLauncherSpawned = TimeUtils.nanoTime();
+        if (score % 400 == 0 && (TimeUtils.millis() - lastRocketLauncherSpawned > 3000) && score > 0) {
+            lastRocketLauncherSpawned = TimeUtils.millis();
             spawnCollectable(Collectable.CollectableType.ROCKETLAUNCHER, 10);
         }
 

@@ -2,21 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="72fd10f6-0531-4a31-8f45-222acbc71b39" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/core/assets/rocketlauncher.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/gdx/game/collectables/weapons/BasicWeapon.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/gdx/game/collectables/weapons/RocketLauncher.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/core/src/com/gdx/game/holster/WeaponHolster.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/core/src/com/gdx/game/Spaceshooter.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/gdx/game/Spaceshooter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/gdx/game/bullets/Bullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/gdx/game/bullets/Bullet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/gdx/game/bullets/BulletType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/gdx/game/collectables/Collectable.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/gdx/game/collectables/Collectable.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/gdx/game/collectables/weapons/ShotGun.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/gdx/game/collectables/weapons/ShotGun.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/gdx/game/collectables/weapons/Weapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/gdx/game/collectables/weapons/Weapon.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/gdx/game/enemys/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/gdx/game/enemys/Enemy.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/gdx/game/enemys/EnemyType.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/gdx/game/obstacles/Obstacle.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/gdx/game/obstacles/Obstacle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/src/com/gdx/game/obstacles/ObstacleType.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -100,6 +88,7 @@
       <updated>1576683003070</updated>
       <workItem from="1576683007215" duration="2000" />
       <workItem from="1576688820170" duration="12908000" />
+      <workItem from="1576703522917" duration="926000" />
     </task>
     <servers />
   </component>
@@ -123,25 +112,25 @@
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
     <state x="1063" y="551" key="#com.intellij.refactoring.move.moveClassesOrPackages.MoveClassesOrPackagesDialog.classes/-1920.348.1536.832/0.0.2560.1400@0.0.2560.1400" timestamp="1576691448994" />
-    <state width="2517" height="485" key="GridCell.Tab.0.bottom" timestamp="1576703198201">
+    <state width="2517" height="284" key="GridCell.Tab.0.bottom" timestamp="1576704549130">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="485" key="GridCell.Tab.0.bottom/-1920.348.1536.832/0.0.2560.1400@0.0.2560.1400" timestamp="1576703198201" />
+    <state width="2517" height="284" key="GridCell.Tab.0.bottom/-1920.348.1536.832/0.0.2560.1400@0.0.2560.1400" timestamp="1576704549130" />
     <state width="1877" height="261" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576685126041" />
-    <state width="2517" height="485" key="GridCell.Tab.0.center" timestamp="1576703198200">
+    <state width="2517" height="284" key="GridCell.Tab.0.center" timestamp="1576704549129">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="485" key="GridCell.Tab.0.center/-1920.348.1536.832/0.0.2560.1400@0.0.2560.1400" timestamp="1576703198200" />
+    <state width="2517" height="284" key="GridCell.Tab.0.center/-1920.348.1536.832/0.0.2560.1400@0.0.2560.1400" timestamp="1576704549129" />
     <state width="1877" height="261" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576685126040" />
-    <state width="2517" height="485" key="GridCell.Tab.0.left" timestamp="1576703198200">
+    <state width="2517" height="284" key="GridCell.Tab.0.left" timestamp="1576704549129">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="485" key="GridCell.Tab.0.left/-1920.348.1536.832/0.0.2560.1400@0.0.2560.1400" timestamp="1576703198200" />
+    <state width="2517" height="284" key="GridCell.Tab.0.left/-1920.348.1536.832/0.0.2560.1400@0.0.2560.1400" timestamp="1576704549129" />
     <state width="1877" height="261" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576685126040" />
-    <state width="2517" height="485" key="GridCell.Tab.0.right" timestamp="1576703198201">
+    <state width="2517" height="284" key="GridCell.Tab.0.right" timestamp="1576704549129">
       <screen x="0" y="0" width="2560" height="1400" />
     </state>
-    <state width="2517" height="485" key="GridCell.Tab.0.right/-1920.348.1536.832/0.0.2560.1400@0.0.2560.1400" timestamp="1576703198201" />
+    <state width="2517" height="284" key="GridCell.Tab.0.right/-1920.348.1536.832/0.0.2560.1400@0.0.2560.1400" timestamp="1576704549129" />
     <state width="1877" height="261" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576685126040" />
     <state width="2517" height="485" key="GridCell.Tab.1.bottom" timestamp="1576703198201">
       <screen x="0" y="0" width="2560" height="1400" />
