@@ -11,6 +11,8 @@ import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.gdx.game.bullets.*;
+import com.gdx.game.collectables.Collectable;
+import com.gdx.game.collectables.Weapon;
 import com.gdx.game.enemys.BasicEnemy;
 import com.gdx.game.enemys.Enemy;
 import com.gdx.game.enemys.EnemyType;
@@ -29,15 +31,20 @@ public class Spaceshooter extends ApplicationAdapter {
     private Texture background;
     private Texture shotgunBulletImg;
     private Texture homingBulletImg;
+    private Texture shotGunWeaponImg;
 
     BitmapFont scoreBoard;
 
     SpaceShip ship;
 
-    int srcx = 0;
+    int backroundSpeed = 0;
 
     LinkedList<Bullet> bullets = new LinkedList<>();
     LinkedList<Enemy> enemys = new LinkedList<>();
+    LinkedList<Weapon> weapons = new LinkedList<>();
+    LinkedList<Collectable> collectables = new LinkedList<>();
+
+    Iterator<Weapon> weaponIterator = weapons.iterator();
 
     long lastBulletSpawn;
     long lastEnemySpawn;
@@ -56,6 +63,7 @@ public class Spaceshooter extends ApplicationAdapter {
         basicEnemyImg = new Texture("enemy.png");
         shotgunBulletImg = new Texture("bullet.png");
         homingBulletImg = new Texture("homingbullet.png");
+        shotGunWeaponImg = new Texture("shotgun.png");
 
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 1280, 720);
@@ -74,8 +82,8 @@ public class Spaceshooter extends ApplicationAdapter {
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
 
-        batch.draw(background, 0, 0, srcx, 0, (int) camera.viewportWidth, (int) camera.viewportHeight);
-        srcx += 2;
+        batch.draw(background, 0, 0, backroundSpeed, 0, (int) camera.viewportWidth, (int) camera.viewportHeight);
+        backroundSpeed += 2;
 
         batch.draw(shipImg, ship.x, ship.y);
 
@@ -152,9 +160,9 @@ public class Spaceshooter extends ApplicationAdapter {
             Bullet bullet = new BasicBullet(ship.x, ship.y, basicBulletImg);
             bullets.add(bullet);
         } else if (type == BulletType.SHOTGUN) {
-            Bullet bullet = new ShotgunBullet(ship.x, ship.y, shotgunBulletImg, BulletDirection.STRAIGHT);
-            Bullet bullet2 = new ShotgunBullet(ship.x, ship.y, shotgunBulletImg, BulletDirection.DIAGONALUP);
-            Bullet bullet3 = new ShotgunBullet(ship.x, ship.y, shotgunBulletImg, BulletDirection.DIAGONALDOWN);
+            Bullet bullet = new ShotgunBullet(ship.x, ship.y, shotgunBulletImg, ShotgunBullet.BulletDirection.STRAIGHT);
+            Bullet bullet2 = new ShotgunBullet(ship.x, ship.y, shotgunBulletImg, ShotgunBullet.BulletDirection.DIAGONALUP);
+            Bullet bullet3 = new ShotgunBullet(ship.x, ship.y, shotgunBulletImg, ShotgunBullet.BulletDirection.DIAGONALDOWN);
             bullets.add(bullet);
             bullets.add(bullet2);
             bullets.add(bullet3);
@@ -162,7 +170,6 @@ public class Spaceshooter extends ApplicationAdapter {
             Bullet bullet = new HomingBullet(ship.x,ship.y,BulletType.HOMINGBULLET,homingBulletImg,enemys);
             bullets.add(bullet);
         }
-
     }
 
     private void moveEnemy() {
@@ -207,6 +214,10 @@ public class Spaceshooter extends ApplicationAdapter {
         shipImg.dispose();
         basicBulletImg.dispose();
         basicEnemyImg.dispose();
+        shotgunBulletImg.dispose();
+        shotGunWeaponImg.dispose();
+        homingBulletImg.dispose();
+        background.dispose();
     }
 
 

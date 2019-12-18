@@ -13,6 +13,8 @@ public abstract class Collectable extends Rectangle {
         this.texture = texture;
     }
 
+    public abstract void moveEntity();
+
     public Texture getTexture() {
         return texture;
     }
