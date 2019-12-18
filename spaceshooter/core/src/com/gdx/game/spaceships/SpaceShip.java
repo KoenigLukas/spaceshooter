@@ -16,10 +16,12 @@ public abstract class SpaceShip extends Rectangle {
         this.texture = texture;
     }
 
-    public void deductLife(int damage){
+    public void deductLife(int damage) {
         lifes -= damage;
-        if(lifes < 0) lifes = 0;
+        if (lifes < 0) lifes = 0;
     }
+
+    public abstract void moveShip(int direction);
 
     public float getMovSpeedFactor() {
         return movSpeedFactor;

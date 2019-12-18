@@ -3,7 +3,7 @@ package com.gdx.game.obstacles;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
 
-public abstract class Obstacle extends Rectangle {
+public abstract class  Obstacle extends Rectangle {
 
     protected float movSpeedFactor;
     private Texture texture;

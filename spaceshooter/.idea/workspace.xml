@@ -2,22 +2,31 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="72fd10f6-0531-4a31-8f45-222acbc71b39" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/core/build/libs/core-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/libs/core-1.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sonarlint/issuestore/index.pb" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/gdx/game/Spaceshooter.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/gdx/game/Spaceshooter.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/gdx/game/bullets/HomingBullet.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/gdx/game/bullets/HomingBullet.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/gdx/game/collectables/weapons/ShotGun.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/gdx/game/collectables/weapons/ShotGun.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/gdx/game/collectables/weapons/Weapon.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/gdx/game/collectables/weapons/Weapon.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/gdx/game/obstacles/Obstacle.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/gdx/game/obstacles/Obstacle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/gdx/game/obstacles/SpaceRock.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/gdx/game/obstacles/SpaceRock.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/gdx/game/spaceships/BasicSpaceShip.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/gdx/game/spaceships/BasicSpaceShip.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/gdx/game/spaceships/SpaceShip.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/gdx/game/spaceships/SpaceShip.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
-  <component name="DefaultGradleProjectSettings">
-    <option name="isMigrated" value="true" />
-  </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="ProjectId" id="1VA5Lbt9t2fX1iLe6UcGmgFkPUx" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
@@ -40,7 +49,7 @@
   <component name="RunManager">
     <configuration name="DesktopLauncher" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.gdx.game.desktop.DesktopLauncher" />
-      <module name="Spaceshooter.desktop.main" />
+      <module name="spaceshooter.desktop.main" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.gdx.game.desktop.*" />
@@ -74,31 +83,51 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="0b46b49a-98ea-42ac-b375-62ebdf7c0ceb" name="Default Changelist" comment="" />
+      <changelist id="72fd10f6-0531-4a31-8f45-222acbc71b39" name="Default Changelist" comment="" />
       <created>1576683003070</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1576683003070</updated>
       <workItem from="1576683007215" duration="2000" />
+      <workItem from="1576688820170" duration="2280000" />
     </task>
     <servers />
   </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
   <component name="WindowStateProjectService">
-    <state width="1877" height="261" key="GridCell.Tab.0.bottom" timestamp="1576685126041">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state x="989" y="339" width="585" height="721" key="#DesktopLauncher" timestamp="1576688854627">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
+    <state x="989" y="339" width="585" height="721" key="#DesktopLauncher/-1920.348.1536.832/0.0.2560.1400@0.0.2560.1400" timestamp="1576688854627" />
+    <state x="1085" y="402" key="#com.intellij.ide.util.MemberChooser" timestamp="1576690370788">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1085" y="402" key="#com.intellij.ide.util.MemberChooser/-1920.348.1536.832/0.0.2560.1400@0.0.2560.1400" timestamp="1576690370788" />
+    <state x="1121" y="589" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog" timestamp="1576688845717">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state x="1121" y="589" key="#com.intellij.ide.util.projectWizard.JdkChooserPanel.MyDialog/-1920.348.1536.832/0.0.2560.1400@0.0.2560.1400" timestamp="1576688845717" />
+    <state width="2517" height="284" key="GridCell.Tab.0.bottom" timestamp="1576690753514">
+      <screen x="0" y="0" width="2560" height="1400" />
+    </state>
+    <state width="2517" height="284" key="GridCell.Tab.0.bottom/-1920.348.1536.832/0.0.2560.1400@0.0.2560.1400" timestamp="1576690753514" />
     <state width="1877" height="261" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576685126041" />
-    <state width="1877" height="261" key="GridCell.Tab.0.center" timestamp="1576685126040">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="2517" height="284" key="GridCell.Tab.0.center" timestamp="1576690753514">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
+    <state width="2517" height="284" key="GridCell.Tab.0.center/-1920.348.1536.832/0.0.2560.1400@0.0.2560.1400" timestamp="1576690753514" />
     <state width="1877" height="261" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576685126040" />
-    <state width="1877" height="261" key="GridCell.Tab.0.left" timestamp="1576685126040">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="2517" height="284" key="GridCell.Tab.0.left" timestamp="1576690753514">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
+    <state width="2517" height="284" key="GridCell.Tab.0.left/-1920.348.1536.832/0.0.2560.1400@0.0.2560.1400" timestamp="1576690753514" />
     <state width="1877" height="261" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576685126040" />
-    <state width="1877" height="261" key="GridCell.Tab.0.right" timestamp="1576685126040">
-      <screen x="0" y="0" width="1920" height="1040" />
+    <state width="2517" height="284" key="GridCell.Tab.0.right" timestamp="1576690753514">
+      <screen x="0" y="0" width="2560" height="1400" />
     </state>
+    <state width="2517" height="284" key="GridCell.Tab.0.right/-1920.348.1536.832/0.0.2560.1400@0.0.2560.1400" timestamp="1576690753514" />
     <state width="1877" height="261" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576685126040" />
   </component>
 </project>

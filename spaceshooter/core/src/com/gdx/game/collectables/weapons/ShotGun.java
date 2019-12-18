@@ -14,5 +14,4 @@ public class ShotGun extends Weapon {
     public void moveEntity() {
         x -= 100 * Gdx.graphics.getDeltaTime();
     }
-
 }

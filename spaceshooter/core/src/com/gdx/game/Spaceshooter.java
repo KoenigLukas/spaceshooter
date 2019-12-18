@@ -41,19 +41,19 @@ public class Spaceshooter extends ApplicationAdapter {
 
     int backroundSpeed = 0;
 
-    LinkedList<Bullet> bullets = new LinkedList<>();
-    LinkedList<Enemy> enemys = new LinkedList<>();
-    LinkedList<Weapon> weapons = new LinkedList<>();
-    LinkedList<Collectable> collectables = new LinkedList<>();
-    LinkedList<Obstacle> obstacles = new LinkedList<>();
+    private LinkedList<Bullet> bullets = new LinkedList<>();
+    private LinkedList<Enemy> enemys = new LinkedList<>();
+    private LinkedList<Weapon> weapons = new LinkedList<>();
+    private LinkedList<Collectable> collectables = new LinkedList<>();
+    private LinkedList<Obstacle> obstacles = new LinkedList<>();
 
     Iterator<Weapon> weaponIterator = weapons.iterator();
 
-    long lastBulletSpawn;
-    long lastEnemySpawn;
-    long lastObstacleSpawn;
+    private long lastBulletSpawn;
+    private long lastEnemySpawn;
+    private long lastObstacleSpawn;
 
-    Integer score = 0;
+    private Integer score = 0;
 
     private OrthographicCamera camera;
 
@@ -92,8 +92,8 @@ public class Spaceshooter extends ApplicationAdapter {
 
         batch.draw(shipImg, ship.x, ship.y);
 
-        if (TimeUtils.nanoTime() - lastEnemySpawn > 1000000000 - score*10000) spawnEnemy(EnemyType.BASIC);
-        if(TimeUtils.nanoTime() - lastObstacleSpawn > 1000000000 - score*10000) spawnObstacle();
+        if (TimeUtils.nanoTime() - lastEnemySpawn > 1000000000 - score * 10000) spawnEnemy(EnemyType.BASIC);
+        if (TimeUtils.nanoTime() - lastObstacleSpawn > 1000000000 - score * 10000) spawnObstacle();
 
         moveEnemy();
         moveBullets();
@@ -118,19 +118,19 @@ public class Spaceshooter extends ApplicationAdapter {
 
     private void handleInput() {
         if (Gdx.input.isKeyPressed(Input.Keys.DOWN)) {
-            ship.y -= 650 * Gdx.graphics.getDeltaTime() + ship.getMovSpeedFactor();
+            ship.moveShip(Input.Keys.DOWN);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.UP)) {
-            ship.y += 650 * Gdx.graphics.getDeltaTime() + ship.getMovSpeedFactor();
+            ship.moveShip(Input.Keys.UP);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.RIGHT)) {
-            ship.x += 600 * Gdx.graphics.getDeltaTime() + ship.getMovSpeedFactor();
+            ship.moveShip(Input.Keys.RIGHT);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.LEFT)) {
-            ship.x -= 600 * Gdx.graphics.getDeltaTime() + ship.getMovSpeedFactor();
+            ship.moveShip(Input.Keys.LEFT);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
-            if (TimeUtils.nanoTime() - lastBulletSpawn > BulletType.BASIC.getDelay())
+            if (TimeUtils.nanoTime() - lastBulletSpawn > BulletType.HOMINGBULLET.getDelay())
                 spawnBullet(BulletType.HOMINGBULLET);
         }
 
@@ -193,8 +193,8 @@ public class Spaceshooter extends ApplicationAdapter {
         }
     }
 
-    private void spawnObstacle(){
-        lastObstacleSpawn=TimeUtils.nanoTime();
+    private void spawnObstacle() {
+        lastObstacleSpawn = TimeUtils.nanoTime();
     }
 
     private void checkBulletImpact() {
@@ -217,7 +217,6 @@ public class Spaceshooter extends ApplicationAdapter {
             }
         }
     }
-
 
     @Override
     public void dispose() {

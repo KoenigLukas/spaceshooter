@@ -24,50 +24,31 @@ public class HomingBullet extends Bullet {
     @Override
     public void moveBullet() {
 
-        enemyIterator= enemyList.iterator();
-        float proportion=1;
-        if(enemyIterator.hasNext()&&(!targetaquired)) {                             //Ersten Enemy zuweisen
+        enemyIterator = enemyList.iterator();
+        float proportion = 1;
+        if (enemyIterator.hasNext() && (!targetaquired)) {                             //Ersten Enemy zuweisen
             enemy = enemyIterator.next();
         }
 
-        while (enemy.isTargeted()&&enemyIterator.hasNext()&&(!targetaquired)){      //Check if enemy is targetted
-            enemy=enemyIterator.next();
-        }
+        if (enemy != null) {
 
-        if(!enemy.isTargeted()) {                                                   //Target statements setzen
-            targetaquired = true;
-            enemy.setTargeted(true);
-        }
-
-        x+=Gdx.graphics.getDeltaTime()*enemy.getSpeed()*100;                          //Move x
-        if(enemy.y>y){
-            y+=Gdx.graphics.getDeltaTime()*enemy.getSpeed()*120;                    //Move y
-        }else if(enemy.y<y-10){
-            y-=Gdx.graphics.getDeltaTime()*enemy.getSpeed()*100;                    //Move y
-        }
-
-
-
-
-
-
-
-
-       /* float dist = Float.MAX_VALUE;
-        Iterator<Enemy> it = enemyList.iterator();
-        Enemy target = null;
-        while(it.hasNext()){
-            Enemy enemy = it.next();
-            float tmp = (x-enemy.x) + (y-enemy.y);
-            if(tmp < dist){
-                dist = tmp;
-                target = enemy;
+            while (enemy.isTargeted() && enemyIterator.hasNext() && (!targetaquired)) {      //Check if enemy is targetted
+                enemy = enemyIterator.next();
             }
+
+            if (!enemy.isTargeted()) {                                                   //Target statements setzen
+                targetaquired = true;
+                enemy.setTargeted(true);
+            }
+
+            x += Gdx.graphics.getDeltaTime() * enemy.getSpeed() * 100;                          //Move x
+            if (enemy.y > y) {
+                y += Gdx.graphics.getDeltaTime() * enemy.getSpeed() * 120;                    //Move y
+            } else if (enemy.y < y - 10) {
+                y -= Gdx.graphics.getDeltaTime() * enemy.getSpeed() * 100;                    //Move y
+            }
+        }   else {
+            x += Gdx.graphics.getDeltaTime() * 100;
         }
-        float ratio = (target.y/target.x);
-        System.out.println(ratio);
-        x += 100* Gdx.graphics.getDeltaTime() + movSpeedFactor;
-        y += (100*ratio*10)* Gdx.graphics.getDeltaTime() + movSpeedFactor;
-        */
     }
 }

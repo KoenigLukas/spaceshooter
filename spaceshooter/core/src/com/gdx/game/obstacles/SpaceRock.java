@@ -10,6 +10,6 @@ public class SpaceRock extends Obstacle {
 
     @Override
     public void moveObstacle() {
-        x-= Gdx.graphics.getDeltaTime()*100;
+        x -= Gdx.graphics.getDeltaTime() * 100;
     }
 }
