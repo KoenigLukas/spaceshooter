@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0b46b49a-98ea-42ac-b375-62ebdf7c0ceb" name="Default Changelist" comment="" />
+    <list default="true" id="72fd10f6-0531-4a31-8f45-222acbc71b39" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/libs/core-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/libs/core-1.0.jar" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -16,6 +20,9 @@
     </projectState>
   </component>
   <component name="ProjectId" id="1VA5Lbt9t2fX1iLe6UcGmgFkPUx" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -75,5 +82,23 @@
       <workItem from="1576683007215" duration="2000" />
     </task>
     <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state width="1877" height="261" key="GridCell.Tab.0.bottom" timestamp="1576685126041">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="261" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576685126041" />
+    <state width="1877" height="261" key="GridCell.Tab.0.center" timestamp="1576685126040">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="261" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576685126040" />
+    <state width="1877" height="261" key="GridCell.Tab.0.left" timestamp="1576685126040">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="261" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576685126040" />
+    <state width="1877" height="261" key="GridCell.Tab.0.right" timestamp="1576685126040">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state width="1877" height="261" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576685126040" />
   </component>
 </project>
