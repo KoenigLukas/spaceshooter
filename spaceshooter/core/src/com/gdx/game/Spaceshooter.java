@@ -12,7 +12,7 @@ import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.gdx.game.bullets.*;
 import com.gdx.game.collectables.Collectable;
-import com.gdx.game.collectables.Weapon;
+import com.gdx.game.collectables.weapons.Weapon;
 import com.gdx.game.enemys.BasicEnemy;
 import com.gdx.game.enemys.Enemy;
 import com.gdx.game.enemys.EnemyType;
@@ -87,7 +87,7 @@ public class Spaceshooter extends ApplicationAdapter {
 
         batch.draw(shipImg, ship.x, ship.y);
 
-        if (TimeUtils.nanoTime() - lastEnemySpawn > 1000000000 - score*10000) spawnEnemy(EnemyType.BASIC);
+        if (TimeUtils.nanoTime() - lastEnemySpawn > 1000000000 - score * 10000) spawnEnemy(EnemyType.BASIC);
 
         moveEnemy();
         moveBullets();
@@ -124,7 +124,8 @@ public class Spaceshooter extends ApplicationAdapter {
             ship.x -= 600 * Gdx.graphics.getDeltaTime() + ship.getMovSpeedFactor();
         }
         if (Gdx.input.isKeyPressed(Input.Keys.SPACE)) {
-            if (TimeUtils.nanoTime() - lastBulletSpawn > BulletType.HOMINGBULLET.getDelay()) spawnBullet(BulletType.HOMINGBULLET);
+            if (TimeUtils.nanoTime() - lastBulletSpawn > BulletType.BASIC.getDelay())
+                spawnBullet(BulletType.HOMINGBULLET);
         }
 
         if (ship.x < 0) ship.x = 0;
@@ -166,8 +167,8 @@ public class Spaceshooter extends ApplicationAdapter {
             bullets.add(bullet);
             bullets.add(bullet2);
             bullets.add(bullet3);
-        } else if(type == BulletType.HOMINGBULLET){
-            Bullet bullet = new HomingBullet(ship.x,ship.y,BulletType.HOMINGBULLET,homingBulletImg,enemys);
+        } else if (type == BulletType.HOMINGBULLET) {
+            Bullet bullet = new HomingBullet(ship.x, ship.y, BulletType.HOMINGBULLET, homingBulletImg, enemys);
             bullets.add(bullet);
         }
     }

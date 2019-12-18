@@ -1,7 +1,8 @@
-package com.gdx.game.collectables;
+package com.gdx.game.collectables.weapons;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.gdx.game.bullets.BulletType;
+import com.gdx.game.collectables.Collectable;
 
 public abstract class Weapon extends Collectable {
 

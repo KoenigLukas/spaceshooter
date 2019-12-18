@@ -25,7 +25,8 @@ public class HomingBullet extends Bullet {
 
         x+=Gdx.graphics.getDeltaTime()*70;
 
-        while (enemy.isTargeted()&&enemyIterator.hasNext()&&!targetaquired){
+
+        while (enemy.isTargeted() && enemyIterator.hasNext() && !targetaquired){
             enemy=enemyIterator.next();                             //Check if enemy is targetted
         }
         if(!enemy.isTargeted()) {

@@ -15,3 +15,15 @@ Y
 ,core/src/com/gdx/game/enemys/BasicEnemy.java,1\5\15010b5df4f644a08c05e6b0706b278a862a7bec
 ^
 .core/src/com/gdx/game/bullets/BasicBullet.java,4\1\4154fb450a8a71eae3112101f8591267c7e09702
+c
+3core/src/com/gdx/game/collectables/Collectable.java,8\5\85ece802cd445d09f05a8af013373226b7d73ac0
+_
+/core/src/com/gdx/game/spaceships/SpaceShip.java,9\a\9acbef14257275df66f7d443e6dc607ed16d3d2b
+W
+'core/src/com/gdx/game/enemys/Enemy.java,8\1\811a3e577eeadf2b17f551580f3e7a04952a8618
+g
+7core/src/com/gdx/game/collectables/weapons/ShotGun.java,9\3\9393a7cb2b39b143ba202f80bc39fc1c61e8bbd9
+f
+6core/src/com/gdx/game/collectables/weapons/Weapon.java,e\9\e9c7a93e6ec37bd18a0cb5f2336de24c41ad33c1
+_
+/core/src/com/gdx/game/bullets/HomingBullet.java,b\a\bab9c3766219f364769b2e74ad138125aacef623

@@ -1,4 +1,4 @@
-package com.gdx.game.collectables;
+package com.gdx.game.collectables.weapons;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
