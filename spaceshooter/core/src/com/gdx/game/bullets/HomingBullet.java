@@ -21,12 +21,15 @@ public class HomingBullet extends Bullet {
     public void moveBullet() {
         Iterator<Enemy> enemyIterator= enemyList.iterator();
         float proportion=1;
-        Enemy enemy = enemyIterator.next();
+        Enemy enemy= null;
+        if(enemyIterator.hasNext()) {
+            enemy = enemyIterator.next();
+        }
 
         x+=Gdx.graphics.getDeltaTime()*70;
 
         while (enemy.isTargeted()&&enemyIterator.hasNext()&&!targetaquired){
-            enemy=enemyIterator.next();                             //Check if enemy is targetted
+            enemy=enemyIterator.next();                         //Check if enemy is targetted
         }
         if(!enemy.isTargeted()) {
             targetaquired = true;
