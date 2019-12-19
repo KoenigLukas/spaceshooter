@@ -104,7 +104,8 @@ public class Spaceshooter extends ApplicationAdapter {
         ship = new BasicSpaceShip(20, (camera.viewportHeight / 2), shipImg);
 
         explosionEffect = new ParticleEffect();
-        explosionEffect.load(Gdx.files.internal("explosion.p"),Gdx.files.internal(""));
+        explosionEffect.load(Gdx.files.internal("newexplosion.p"),Gdx.files.internal(""));
+        explosionEffect.setPosition(-1000,-1000);
 
     }
 
