@@ -7,6 +7,7 @@ import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
+import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.TimeUtils;
@@ -53,6 +54,7 @@ public class Spaceshooter extends ApplicationAdapter {
     private LinkedList<Enemy> enemys = new LinkedList<>();
     private LinkedList<Collectable> collectables = new LinkedList<>();
     private LinkedList<Obstacle> obstacles = new LinkedList<>();
+    private LinkedList<ParticleEffect> effects = new LinkedList<>();
 
     private long lastBulletSpawn;
     private long lastEnemySpawn;
@@ -135,6 +137,18 @@ public class Spaceshooter extends ApplicationAdapter {
         }
         for (Collectable collectable : collectables) {
             batch.draw(collectable.getTexture(), collectable.x, collectable.y);
+        }
+        for (ParticleEffect effect : effects) {
+            effect.draw(batch);
+        }
+
+        Iterator<ParticleEffect> eit = effects.iterator();
+
+        while(eit.hasNext()){
+            ParticleEffect pe = eit.next();
+            if(pe.isComplete()){
+                eit.remove();
+            }
         }
 
         String scoreBoardText;
@@ -224,6 +238,14 @@ public class Spaceshooter extends ApplicationAdapter {
         }
     }
 
+    private void createExplosion(float x, float y){
+        ParticleEffect effect = new ParticleEffect();
+        effect.load(Gdx.files.internal("explosion.p"),Gdx.files.internal("explosion.p"));
+        effect.start();
+        effect.setPosition(x, y);
+        effects.add(effect);
+    }
+
     private void moveBullets() {
         for (Bullet bullet : bullets) {
             bullet.moveBullet();
@@ -280,6 +302,7 @@ public class Spaceshooter extends ApplicationAdapter {
                     bit.remove();
                     if (tmpenemy.getLifes() == 0) {
                         eit.remove();
+                        createExplosion(tmpenemy.x,tmpenemy.y);
                         score += 10;
                     }
                 }
