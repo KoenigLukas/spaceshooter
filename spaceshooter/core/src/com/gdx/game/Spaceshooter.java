@@ -69,6 +69,7 @@ public class Spaceshooter extends ApplicationAdapter {
     private long lastWeaponSwitch;
     private long lastShotGunSpawned;
     private long lastRocketLauncherSpawned;
+    private long lastExplosion;
 
     private Integer score = 0;
 
@@ -106,6 +107,8 @@ public class Spaceshooter extends ApplicationAdapter {
         explosionEffect = new ParticleEffect();
         explosionEffect.load(Gdx.files.internal("newexplosion.p"),Gdx.files.internal(""));
         explosionEffect.setPosition(-1000,-1000);
+
+        lastExplosion=0;
 
     }
 
@@ -262,7 +265,8 @@ public class Spaceshooter extends ApplicationAdapter {
     }
 
     private void createExplosion(float x, float y) {
-        explosionEffect.setPosition(x,y);
+            explosionEffect.setPosition(x, y);
+            lastExplosion = TimeUtils.nanoTime();
     }
 
     private void moveBullets() {

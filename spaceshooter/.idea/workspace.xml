@@ -1,18 +1,45 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0b46b49a-98ea-42ac-b375-62ebdf7c0ceb" name="Default Changelist" comment="" />
+    <list default="true" id="943124d4-83e8-400b-8c97-549016f07573" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/executionHistory/executionHistory.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileContent/fileContent.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileContent/fileContent.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/fileHashes.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/fileHashes/resourceHashesCache.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/classAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/jarAnalysis.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/jarAnalysis.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/javaCompile.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/5.4.1/javaCompile/taskHistory.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/buildOutputCleanup.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/cache.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" beforeDir="false" afterPath="$PROJECT_DIR$/.gradle/buildOutputCleanup/outputFiles.bin" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/gradle.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/assets/newexplosion.p" beforeDir="false" afterPath="$PROJECT_DIR$/core/assets/newexplosion.p" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/build/libs/core-1.0.jar" beforeDir="false" afterPath="$PROJECT_DIR$/core/build/libs/core-1.0.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/core/src/com/gdx/game/Spaceshooter.java" beforeDir="false" afterPath="$PROJECT_DIR$/core/src/com/gdx/game/Spaceshooter.java" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="DefaultGradleProjectSettings">
+    <option name="isMigrated" value="true" />
   </component>
   <component name="ExternalProjectsData">
     <projectState path="$PROJECT_DIR$">
       <ProjectState />
     </projectState>
   </component>
-  <component name="ProjectId" id="1VA5Lbt9t2fX1iLe6UcGmgFkPUx" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectId" id="1VD8m0TeS3sOKc82QViUgXI7NpO" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showExcludedFiles" value="true" />
@@ -22,20 +49,14 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
     <property name="show.unlinked.gradle.project.popup" value="true" />
   </component>
-  <component name="RecentsManager">
-    <key name="MoveFile.RECENT_KEYS">
-      <recent name="C:\Users\Benjamin\Documents\Spaceshooter\core\assets" />
-    </key>
-  </component>
   <component name="RunManager" selected="Application.DesktopLauncher">
     <configuration name="DesktopLauncher" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.gdx.game.desktop.DesktopLauncher" />
-      <module name="Spaceshooter.desktop.main" />
+      <module name="spaceshooter.desktop.main" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.gdx.game.desktop.*" />
@@ -60,8 +81,8 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.DesktopLauncher" />
         <item itemvalue="Application.ParticleEditor" />
+        <item itemvalue="Application.DesktopLauncher" />
       </list>
     </recent_temporary>
   </component>
@@ -82,15 +103,12 @@
   </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="0b46b49a-98ea-42ac-b375-62ebdf7c0ceb" name="Default Changelist" comment="" />
-      <created>1576683003070</created>
+      <changelist id="943124d4-83e8-400b-8c97-549016f07573" name="Default Changelist" comment="" />
+      <created>1576776459719</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1576683003070</updated>
-      <workItem from="1576683007215" duration="4902000" />
-      <workItem from="1576697307168" duration="1067000" />
-      <workItem from="1576704625794" duration="2089000" />
-      <workItem from="1576775015025" duration="833000" />
+      <updated>1576776459719</updated>
+      <workItem from="1576776468824" duration="1047000" />
     </task>
     <servers />
   </component>
@@ -98,45 +116,25 @@
     <option name="version" value="1" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="674" y="155" key="#ParticleEditor" timestamp="1576775723104">
+    <state x="674" y="155" key="#ParticleEditor" timestamp="1576776565626">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state x="674" y="155" key="#ParticleEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576775723104" />
-    <state width="1877" height="224" key="GridCell.Tab.0.bottom" timestamp="1576775849169">
+    <state x="674" y="155" key="#ParticleEditor/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576776565626" />
+    <state width="1877" height="261" key="GridCell.Tab.0.bottom" timestamp="1576777360994">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="224" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576775849169" />
-    <state width="1877" height="224" key="GridCell.Tab.0.center" timestamp="1576775849168">
+    <state width="1877" height="261" key="GridCell.Tab.0.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576777360994" />
+    <state width="1877" height="261" key="GridCell.Tab.0.center" timestamp="1576777360994">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="224" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576775849168" />
-    <state width="1877" height="224" key="GridCell.Tab.0.left" timestamp="1576775849168">
+    <state width="1877" height="261" key="GridCell.Tab.0.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576777360994" />
+    <state width="1877" height="261" key="GridCell.Tab.0.left" timestamp="1576777360994">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="224" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576775849168" />
-    <state width="1877" height="224" key="GridCell.Tab.0.right" timestamp="1576775849169">
+    <state width="1877" height="261" key="GridCell.Tab.0.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576777360994" />
+    <state width="1877" height="261" key="GridCell.Tab.0.right" timestamp="1576777360994">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
-    <state width="1877" height="224" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576775849169" />
-    <state width="1877" height="289" key="GridCell.Tab.1.bottom" timestamp="1576706720611">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="289" key="GridCell.Tab.1.bottom/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576706720611" />
-    <state width="1877" height="289" key="GridCell.Tab.1.center" timestamp="1576706720611">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="289" key="GridCell.Tab.1.center/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576706720611" />
-    <state width="1877" height="289" key="GridCell.Tab.1.left" timestamp="1576706720611">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="289" key="GridCell.Tab.1.left/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576706720611" />
-    <state width="1877" height="289" key="GridCell.Tab.1.right" timestamp="1576706720611">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state width="1877" height="289" key="GridCell.Tab.1.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576706720611" />
-    <state x="616" y="240" key="run.anything.popup" timestamp="1576703320088">
-      <screen x="0" y="0" width="1920" height="1040" />
-    </state>
-    <state x="616" y="240" key="run.anything.popup/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576703320088" />
+    <state width="1877" height="261" key="GridCell.Tab.0.right/0.0.1920.1040/1920.0.1920.1040@0.0.1920.1040" timestamp="1576777360994" />
   </component>
 </project>
