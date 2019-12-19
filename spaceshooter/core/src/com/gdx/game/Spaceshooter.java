@@ -43,6 +43,7 @@ public class Spaceshooter extends ApplicationAdapter {
     private Texture shotGunWeaponImg;
     private Texture spaceRockImg;
     private Texture rocketLauncherWeaponImg;
+    private Texture satelliteImg;
 
     private BitmapFont scoreBoardFont;
     private BitmapFont weaponHolsterFont;
@@ -86,6 +87,7 @@ public class Spaceshooter extends ApplicationAdapter {
         shotGunWeaponImg = new Texture("shotgun.png");
         spaceRockImg = new Texture("spacerock.png");
         rocketLauncherWeaponImg = new Texture("rocketlauncher.png");
+        satelliteImg = new Texture("satellite.png");
 
         obstacleTypes = Obstacle.ObstacleType.class.getEnumConstants();
 
@@ -289,11 +291,10 @@ public class Spaceshooter extends ApplicationAdapter {
         type = obstacleTypes[(int) (Math.random() * 10) % obstacleTypes.length];
 
         Obstacle obstacle = null;
-        if (type == Obstacle.ObstacleType.ROCK)
-            obstacle = new SpaceRock(camera.viewportWidth, (MathUtils.random(0, camera.viewportHeight - 64)), spaceRockImg);
-        if (type == Obstacle.ObstacleType.SATELLITE)
-            obstacle = new SpaceRock(camera.viewportWidth, (MathUtils.random(0, camera.viewportHeight - 64)), basicBulletImg);
-        if (obstacle != null) obstacles.add(obstacle);
+        if(type == Obstacle.ObstacleType.ROCK)
+            obstacle= new SpaceRock(camera.viewportWidth, (MathUtils.random(0, camera.viewportHeight - 64)), spaceRockImg);
+        if(type == Obstacle.ObstacleType.SATELLITE)
+            obstacle= new SpaceRock(camera.viewportWidth, (MathUtils.random(0, camera.viewportHeight - 64)), satelliteImg);
 
         lastObstacleSpawn = TimeUtils.millis();
     }
@@ -323,7 +324,11 @@ public class Spaceshooter extends ApplicationAdapter {
                 Enemy tmpenemy = eit.next();
                 if (tmpbullet.overlaps(tmpenemy)) {
                     tmpenemy.deductLife(tmpbullet.getDamage());
-                    bit.remove();
+                    try {
+                        bit.remove();
+                    }catch (Exception e){
+                        System.out.println("blos");
+                    }
                     if (tmpenemy.getLifes() == 0) {
                         eit.remove();
                         createExplosion(tmpenemy.x, tmpenemy.y);
