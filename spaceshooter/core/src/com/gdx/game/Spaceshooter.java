@@ -59,14 +59,16 @@ public class Spaceshooter extends ApplicationAdapter {
     private LinkedList<ParticleEffect> effects = new LinkedList<>();
     private Obstacle.ObstacleType[] obstacleTypes;
 
+
+    private ParticleEffect explosionEffect;
+
+
     private long lastBulletSpawn;
     private long lastEnemySpawn;
     private long lastObstacleSpawn;
     private long lastWeaponSwitch;
     private long lastShotGunSpawned;
     private long lastRocketLauncherSpawned;
-
-    private Obstacle.ObstacleType type;
 
     private Integer score = 0;
 
@@ -100,6 +102,9 @@ public class Spaceshooter extends ApplicationAdapter {
         weaponHolster = new WeaponHolster(new BasicWeapon());
 
         ship = new BasicSpaceShip(20, (camera.viewportHeight / 2), shipImg);
+
+        explosionEffect = new ParticleEffect();
+        explosionEffect.load(Gdx.files.internal("explosion.p"),Gdx.files.internal(""));
 
     }
 
@@ -151,18 +156,23 @@ public class Spaceshooter extends ApplicationAdapter {
             batch.draw(obstacle.getTexture(), obstacle.x, obstacle.y);
         }
 
-        for (ParticleEffect effect : effects) {
-            effect.start();
-            effect.draw(batch);
-        }
-        Iterator<ParticleEffect> eit = effects.iterator();
+        explosionEffect.start();
+        explosionEffect.draw(batch,Gdx.graphics.getDeltaTime());
 
-        while (eit.hasNext()) {
-            ParticleEffect pe = eit.next();
-            if (pe.isComplete()) {
-                eit.remove();
-            }
-        }
+//        for (ParticleEffect effect : effects) {
+//            effect.start();
+//            effect.draw(batch);
+//        }
+//        Iterator<ParticleEffect> eit = effects.iterator();
+//
+//        while (eit.hasNext()) {
+//            ParticleEffect pe = eit.next();
+//            if (pe.isComplete()) {
+//                eit.remove();
+//            }
+//        }
+
+
 
         String scoreBoardText;
         scoreBoardText = "Score: " + score + " Lifes: " + ship.getLifes();
@@ -251,10 +261,7 @@ public class Spaceshooter extends ApplicationAdapter {
     }
 
     private void createExplosion(float x, float y) {
-        ParticleEffect effect = new ParticleEffect();
-        effect.load(Gdx.files.internal("explosion.p"), Gdx.files.internal(""));
-        effect.setPosition(x, y);
-        effects.add(effect);
+        explosionEffect.setPosition(x,y);
     }
 
     private void moveBullets() {
@@ -288,7 +295,7 @@ public class Spaceshooter extends ApplicationAdapter {
     }
 
     private void spawnObstacle() {
-        type = obstacleTypes[(int) (Math.random() * 10) % obstacleTypes.length];
+        Obstacle.ObstacleType type = obstacleTypes[(int) (Math.random() * 10) % obstacleTypes.length];
 
         Obstacle obstacle = null;
         if(type == Obstacle.ObstacleType.ROCK)
