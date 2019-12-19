@@ -10,7 +10,6 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
-import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.gdx.game.bullets.BasicBullet;
 import com.gdx.game.bullets.Bullet;
@@ -29,10 +28,8 @@ import com.gdx.game.obstacles.SpaceRock;
 import com.gdx.game.spaceships.BasicSpaceShip;
 import com.gdx.game.spaceships.SpaceShip;
 
-import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedList;
-import java.util.List;
 
 public class Spaceshooter extends ApplicationAdapter {
     SpriteBatch batch;
@@ -59,7 +56,7 @@ public class Spaceshooter extends ApplicationAdapter {
     private LinkedList<Collectable> collectables = new LinkedList<>();
     private LinkedList<Obstacle> obstacles = new LinkedList<>();
     private LinkedList<ParticleEffect> effects = new LinkedList<>();
-    private List<Obstacle.ObstacleType> obstacleTypes = new LinkedList<>();
+    private Obstacle.ObstacleType[] obstacleTypes;
 
     private long lastBulletSpawn;
     private long lastEnemySpawn;
@@ -90,7 +87,7 @@ public class Spaceshooter extends ApplicationAdapter {
         spaceRockImg = new Texture("spacerock.png");
         rocketLauncherWeaponImg = new Texture("rocketlauncher.png");
 
-        type = Obstacle.ObstacleType.ROCK;
+        obstacleTypes = Obstacle.ObstacleType.class.getEnumConstants();
 
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 1280, 720);
@@ -101,8 +98,6 @@ public class Spaceshooter extends ApplicationAdapter {
         weaponHolster = new WeaponHolster(new BasicWeapon());
 
         ship = new BasicSpaceShip(20, (camera.viewportHeight / 2), shipImg);
-
-        initObstacleTypes();
 
     }
 
@@ -138,8 +133,8 @@ public class Spaceshooter extends ApplicationAdapter {
         moveObstacle();
         checkObstacleImpact();
         checkBulletImpact();
-        checkEnemyHit();
-        checkCollectableCollision();
+        checkEnemyImpact();
+        checkCollectableImpact();
 
         for (Bullet bullet : bullets) {
             batch.draw(bullet.getTexture(), bullet.x, bullet.y);
@@ -154,16 +149,15 @@ public class Spaceshooter extends ApplicationAdapter {
             effect.start();
             effect.draw(batch);
         }
-
-        for (Obstacle obstacle : obstacles){
-            batch.draw(obstacle.getTexture(),obstacle.x,obstacle.y);
+        for (Obstacle obstacle : obstacles) {
+            batch.draw(obstacle.getTexture(), obstacle.x, obstacle.y);
         }
 
         Iterator<ParticleEffect> eit = effects.iterator();
 
-        while(eit.hasNext()){
+        while (eit.hasNext()) {
             ParticleEffect pe = eit.next();
-            if(pe.isComplete()){
+            if (pe.isComplete()) {
                 eit.remove();
             }
         }
@@ -199,7 +193,6 @@ public class Spaceshooter extends ApplicationAdapter {
             ship.moveShip(Input.Keys.LEFT);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.X)) {
-
             if (TimeUtils.nanoTime() - lastWeaponSwitch > 50000000) weaponHolster.switchSelection();
             lastWeaponSwitch = TimeUtils.nanoTime();
         }
@@ -240,7 +233,7 @@ public class Spaceshooter extends ApplicationAdapter {
         if (ship.x > camera.viewportWidth - ship.width) ship.x = camera.viewportWidth - ship.width;
     }
 
-    private void checkEnemyHit() {
+    private void checkEnemyImpact() {
         Iterator<Enemy> it = enemys.iterator();
         while (it.hasNext()) {
             Enemy enemy = it.next();
@@ -255,9 +248,9 @@ public class Spaceshooter extends ApplicationAdapter {
         }
     }
 
-    private void createExplosion(float x, float y){
+    private void createExplosion(float x, float y) {
         ParticleEffect effect = new ParticleEffect();
-        effect.load(Gdx.files.internal("explosion.p"),Gdx.files.internal(""));
+        effect.load(Gdx.files.internal("explosion.p"), Gdx.files.internal(""));
         effect.setPosition(x, y);
         effects.add(effect);
     }
@@ -268,8 +261,8 @@ public class Spaceshooter extends ApplicationAdapter {
         }
     }
 
-    private void moveObstacle(){
-        for(Obstacle obstacle : obstacles){
+    private void moveObstacle() {
+        for (Obstacle obstacle : obstacles) {
             obstacle.moveObstacle();
         }
     }
@@ -292,19 +285,17 @@ public class Spaceshooter extends ApplicationAdapter {
         }
     }
 
-    private void spawnObstacle(){
-
-        type= obstacleTypes.get(((int) ((Math.random()) * 10) % obstacleTypes.size()));
+    private void spawnObstacle() {
+        type = obstacleTypes[(int) (Math.random() * 10) % obstacleTypes.length];
 
         Obstacle obstacle = null;
-        if(type == Obstacle.ObstacleType.ROCK)
-            obstacle= new SpaceRock(camera.viewportWidth, (MathUtils.random(0, camera.viewportHeight - 64)), spaceRockImg);
-        if(type == Obstacle.ObstacleType.SATELLITE)
-            obstacle= new SpaceRock(camera.viewportWidth, (MathUtils.random(0, camera.viewportHeight - 64)), basicBulletImg);
+        if (type == Obstacle.ObstacleType.ROCK)
+            obstacle = new SpaceRock(camera.viewportWidth, (MathUtils.random(0, camera.viewportHeight - 64)), spaceRockImg);
+        if (type == Obstacle.ObstacleType.SATELLITE)
+            obstacle = new SpaceRock(camera.viewportWidth, (MathUtils.random(0, camera.viewportHeight - 64)), basicBulletImg);
+        if (obstacle != null) obstacles.add(obstacle);
 
-        if(obstacle!=null)obstacles.add(obstacle);
-
-        lastObstacleSpawn=TimeUtils.millis();
+        lastObstacleSpawn = TimeUtils.millis();
     }
 
     private void moveEnemy() {
@@ -335,7 +326,7 @@ public class Spaceshooter extends ApplicationAdapter {
                     bit.remove();
                     if (tmpenemy.getLifes() == 0) {
                         eit.remove();
-                        createExplosion(tmpenemy.x,tmpenemy.y);
+                        createExplosion(tmpenemy.x, tmpenemy.y);
                         score += 10;
                     }
                 }
@@ -363,7 +354,7 @@ public class Spaceshooter extends ApplicationAdapter {
         }
     }
 
-    private void checkCollectableCollision() {
+    private void checkCollectableImpact() {
         Iterator<Collectable> it = collectables.iterator();
         while (it.hasNext()) {
             Collectable collectable = it.next();
@@ -376,17 +367,12 @@ public class Spaceshooter extends ApplicationAdapter {
         }
     }
 
-    private void checkObstacleImpact(){
+    private void checkObstacleImpact() {
         Iterator<Obstacle> obstacleIterator = obstacles.iterator();
-        while (obstacleIterator.hasNext()){
+        while (obstacleIterator.hasNext()) {
             Obstacle obstacle = obstacleIterator.next();
-            if(obstacle.overlaps(ship)) ship.deductLife(1);
+            if (obstacle.overlaps(ship)) ship.deductLife(1);
         }
-    }
-
-    private void initObstacleTypes(){
-        Obstacle.ObstacleType[] typesarray = Obstacle.ObstacleType.class.getEnumConstants();
-        obstacleTypes = Arrays.asList(typesarray);
     }
 
 
