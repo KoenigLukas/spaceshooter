@@ -295,7 +295,7 @@ public class Spaceshooter extends ApplicationAdapter {
             obstacle= new SpaceRock(camera.viewportWidth, (MathUtils.random(0, camera.viewportHeight - 64)), spaceRockImg);
         if(type == Obstacle.ObstacleType.SATELLITE)
             obstacle= new SpaceRock(camera.viewportWidth, (MathUtils.random(0, camera.viewportHeight - 64)), satelliteImg);
-
+        if(obstacle!=null) obstacles.add(obstacle);
         lastObstacleSpawn = TimeUtils.millis();
     }
 
