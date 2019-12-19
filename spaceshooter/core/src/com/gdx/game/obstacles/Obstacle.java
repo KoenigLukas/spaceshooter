@@ -8,14 +8,12 @@ public abstract class  Obstacle extends Rectangle {
     protected float movSpeedFactor;
     private Texture texture;
     private ObstacleType type;
-    protected float speed;
 
-    public Obstacle(float x, float y, float width, float height, float movSpeedFactor, Texture texture, ObstacleType type, float speed) {
+    public Obstacle(float x, float y, float width, float height, float movSpeedFactor, Texture texture, ObstacleType type) {
         super(x, y, width, height);
         this.movSpeedFactor = movSpeedFactor;
         this.texture = texture;
         this.type = type;
-        this.speed = speed;
     }
 
     public abstract void moveObstacle();
@@ -32,11 +30,8 @@ public abstract class  Obstacle extends Rectangle {
         return type;
     }
 
-    public float getSpeed() {
-        return speed;
-    }
-
     public enum ObstacleType {
         ROCK,
+        SATELLITE,
     }
 }

@@ -10,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
+import com.badlogic.gdx.utils.Array;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.gdx.game.bullets.BasicBullet;
 import com.gdx.game.bullets.Bullet;
@@ -24,11 +25,14 @@ import com.gdx.game.enemys.BasicEnemy;
 import com.gdx.game.enemys.Enemy;
 import com.gdx.game.holster.WeaponHolster;
 import com.gdx.game.obstacles.Obstacle;
+import com.gdx.game.obstacles.SpaceRock;
 import com.gdx.game.spaceships.BasicSpaceShip;
 import com.gdx.game.spaceships.SpaceShip;
 
+import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedList;
+import java.util.List;
 
 public class Spaceshooter extends ApplicationAdapter {
     SpriteBatch batch;
@@ -55,6 +59,7 @@ public class Spaceshooter extends ApplicationAdapter {
     private LinkedList<Collectable> collectables = new LinkedList<>();
     private LinkedList<Obstacle> obstacles = new LinkedList<>();
     private LinkedList<ParticleEffect> effects = new LinkedList<>();
+    private List<Obstacle.ObstacleType> obstacleTypes = new LinkedList<>();
 
     private long lastBulletSpawn;
     private long lastEnemySpawn;
@@ -62,6 +67,8 @@ public class Spaceshooter extends ApplicationAdapter {
     private long lastWeaponSwitch;
     private long lastShotGunSpawned;
     private long lastRocketLauncherSpawned;
+
+    private Obstacle.ObstacleType type;
 
     private Integer score = 0;
 
@@ -80,8 +87,10 @@ public class Spaceshooter extends ApplicationAdapter {
         shotgunBulletImg = new Texture("bullet.png");
         homingBulletImg = new Texture("homingbullet.png");
         shotGunWeaponImg = new Texture("shotgun.png");
-        spaceRockImg = new Texture("spaceship.png");
+        spaceRockImg = new Texture("spacerock.png");
         rocketLauncherWeaponImg = new Texture("rocketlauncher.png");
+
+        type = Obstacle.ObstacleType.ROCK;
 
         camera = new OrthographicCamera();
         camera.setToOrtho(false, 1280, 720);
@@ -92,6 +101,8 @@ public class Spaceshooter extends ApplicationAdapter {
         weaponHolster = new WeaponHolster(new BasicWeapon());
 
         ship = new BasicSpaceShip(20, (camera.viewportHeight / 2), shipImg);
+
+        initObstacleTypes();
 
     }
 
@@ -109,9 +120,9 @@ public class Spaceshooter extends ApplicationAdapter {
         batch.draw(shipImg, ship.x, ship.y);
 
         if (TimeUtils.nanoTime() - lastEnemySpawn > 1000000000 - score * 10000) spawnEnemy(Enemy.EnemyType.BASIC);
-        if (TimeUtils.nanoTime() - lastObstacleSpawn > 1000000000 - score * 10000) spawnObstacle();
+        if (TimeUtils.millis() - lastObstacleSpawn > 4000 - score * 0.002) spawnObstacle();
 
-        if (score % 100 == 0 && (TimeUtils.millis() - lastShotGunSpawned > 3000) && score > 0) {
+        if (score % 200 == 0 && (TimeUtils.millis() - lastShotGunSpawned > 3000) && score > 0) {
             lastShotGunSpawned = TimeUtils.millis();
             spawnCollectable(Collectable.CollectableType.SHOTGUN, 50);
         }
@@ -121,10 +132,11 @@ public class Spaceshooter extends ApplicationAdapter {
             spawnCollectable(Collectable.CollectableType.ROCKETLAUNCHER, 10);
         }
 
-
         moveEnemy();
         moveBullets();
         moveCollectable();
+        moveObstacle();
+        checkObstacleImpact();
         checkBulletImpact();
         checkEnemyHit();
         checkCollectableCollision();
@@ -141,6 +153,10 @@ public class Spaceshooter extends ApplicationAdapter {
         for (ParticleEffect effect : effects) {
             effect.start();
             effect.draw(batch);
+        }
+
+        for (Obstacle obstacle : obstacles){
+            batch.draw(obstacle.getTexture(),obstacle.x,obstacle.y);
         }
 
         Iterator<ParticleEffect> eit = effects.iterator();
@@ -252,6 +268,12 @@ public class Spaceshooter extends ApplicationAdapter {
         }
     }
 
+    private void moveObstacle(){
+        for(Obstacle obstacle : obstacles){
+            obstacle.moveObstacle();
+        }
+    }
+
     private void spawnBullet(Bullet.BulletType type) {
         lastBulletSpawn = TimeUtils.nanoTime();
         if (type == Bullet.BulletType.BASIC) {
@@ -270,6 +292,21 @@ public class Spaceshooter extends ApplicationAdapter {
         }
     }
 
+    private void spawnObstacle(){
+
+        type= obstacleTypes.get(((int) ((Math.random()) * 10) % obstacleTypes.size()));
+
+        Obstacle obstacle = null;
+        if(type == Obstacle.ObstacleType.ROCK)
+            obstacle= new SpaceRock(camera.viewportWidth, (MathUtils.random(0, camera.viewportHeight - 64)), spaceRockImg);
+        if(type == Obstacle.ObstacleType.SATELLITE)
+            obstacle= new SpaceRock(camera.viewportWidth, (MathUtils.random(0, camera.viewportHeight - 64)), basicBulletImg);
+
+        if(obstacle!=null)obstacles.add(obstacle);
+
+        lastObstacleSpawn=TimeUtils.millis();
+    }
+
     private void moveEnemy() {
         for (Enemy enemy : enemys) {
             enemy.moveEnemy(score);
@@ -282,10 +319,6 @@ public class Spaceshooter extends ApplicationAdapter {
             Enemy enemy = new BasicEnemy(camera.viewportWidth, (MathUtils.random(0, camera.viewportHeight - 64)), basicEnemyImg);
             enemys.add(enemy);
         }
-    }
-
-    private void spawnObstacle() {
-        lastObstacleSpawn = TimeUtils.nanoTime();
     }
 
     private void checkBulletImpact() {
@@ -341,6 +374,19 @@ public class Spaceshooter extends ApplicationAdapter {
                 }
             }
         }
+    }
+
+    private void checkObstacleImpact(){
+        Iterator<Obstacle> obstacleIterator = obstacles.iterator();
+        while (obstacleIterator.hasNext()){
+            Obstacle obstacle = obstacleIterator.next();
+            if(obstacle.overlaps(ship)) ship.deductLife(1);
+        }
+    }
+
+    private void initObstacleTypes(){
+        Obstacle.ObstacleType[] typesarray = Obstacle.ObstacleType.class.getEnumConstants();
+        obstacleTypes = Arrays.asList(typesarray);
     }
 
 
