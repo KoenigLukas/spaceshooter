@@ -147,14 +147,14 @@ public class Spaceshooter extends ApplicationAdapter {
         for (Collectable collectable : collectables) {
             batch.draw(collectable.getTexture(), collectable.x, collectable.y);
         }
-        for (ParticleEffect effect : effects) {
-            effect.start();
-            effect.draw(batch);
-        }
         for (Obstacle obstacle : obstacles) {
             batch.draw(obstacle.getTexture(), obstacle.x, obstacle.y);
         }
 
+        for (ParticleEffect effect : effects) {
+            effect.start();
+            effect.draw(batch);
+        }
         Iterator<ParticleEffect> eit = effects.iterator();
 
         while (eit.hasNext()) {
@@ -393,6 +393,7 @@ public class Spaceshooter extends ApplicationAdapter {
         background.dispose();
         rocketLauncherWeaponImg.dispose();
         spaceRockImg.dispose();
+        satelliteImg.dispose();
     }
 
 
