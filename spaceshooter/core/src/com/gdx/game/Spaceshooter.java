@@ -139,6 +139,7 @@ public class Spaceshooter extends ApplicationAdapter {
             batch.draw(collectable.getTexture(), collectable.x, collectable.y);
         }
         for (ParticleEffect effect : effects) {
+            effect.start();
             effect.draw(batch);
         }
 
@@ -240,8 +241,7 @@ public class Spaceshooter extends ApplicationAdapter {
 
     private void createExplosion(float x, float y){
         ParticleEffect effect = new ParticleEffect();
-        effect.load(Gdx.files.internal("explosion.p"),Gdx.files.internal("explosion.p"));
-        effect.start();
+        effect.load(Gdx.files.internal("explosion.p"),Gdx.files.internal(""));
         effect.setPosition(x, y);
         effects.add(effect);
     }
