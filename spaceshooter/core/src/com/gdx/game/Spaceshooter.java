@@ -70,7 +70,7 @@ public class Spaceshooter extends ApplicationAdapter {
     @Override
     public void create() {
         batch = new SpriteBatch();
-        background = new Texture("background.png");
+        background = new Texture("backgroundnew.jpg");
         background.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
         shipImg = new Texture("spaceship.png");
         basicBulletImg = new Texture("bullet.png");
