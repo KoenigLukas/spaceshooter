@@ -163,6 +163,8 @@ public class Spaceshooter extends ApplicationAdapter {
         explosionEffect.start();
         explosionEffect.draw(batch,Gdx.graphics.getDeltaTime());
 
+        if(TimeUtils.nanoTime()-lastExplosion>100000000)explosionEffect.setPosition(-100,-100);
+
 //        for (ParticleEffect effect : effects) {
 //            effect.start();
 //            effect.draw(batch);
