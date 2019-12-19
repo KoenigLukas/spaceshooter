@@ -51,7 +51,6 @@ public class Spaceshooter extends ApplicationAdapter {
 
     private LinkedList<Bullet> bullets = new LinkedList<>();
     private LinkedList<Enemy> enemys = new LinkedList<>();
-    private LinkedList<Weapon> weapons = new LinkedList<>();
     private LinkedList<Collectable> collectables = new LinkedList<>();
     private LinkedList<Obstacle> obstacles = new LinkedList<>();
 
@@ -182,7 +181,6 @@ public class Spaceshooter extends ApplicationAdapter {
             } else {
                 if (weaponHolster.hasSecondary() && weaponHolster.getInActive().getAmmo() > 0) {
                     weaponHolster.switchSelection();
-                    weaponHolster.setWeapon2(new BasicWeapon());
                     if (TimeUtils.nanoTime() - lastBulletSpawn > weaponHolster.getActive().getBulletType().getDelay()) {
                         spawnBullet(weaponHolster.getActive().getBulletType());
                         weaponHolster.getActive().useWeapon();
