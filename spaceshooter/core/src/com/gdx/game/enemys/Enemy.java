@@ -60,5 +60,6 @@ public abstract class Enemy extends Rectangle {
 
     public enum EnemyType {
         BASIC,
+        FIRSTBOSS,
     }
 }
