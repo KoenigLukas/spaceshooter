@@ -1,6 +1,7 @@
 package com.gdx.game.holster;
 
 import com.gdx.game.bullets.Bullet;
+import com.gdx.game.collectables.weapons.BasicWeapon;
 import com.gdx.game.collectables.weapons.Weapon;
 
 public class WeaponHolster {
@@ -22,10 +23,7 @@ public class WeaponHolster {
     }
 
     public void switchSelection() {
-        if (weapon2 != null) {
-            selection = !selection;
-        }
-
+        if (weapon2 != null) selection = !selection;
     }
 
     public void collectWeapon(Weapon weapon) {

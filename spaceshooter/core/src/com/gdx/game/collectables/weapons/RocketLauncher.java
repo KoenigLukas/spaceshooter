@@ -11,6 +11,6 @@ public class RocketLauncher extends Weapon {
 
     @Override
     public void moveEntity() {
-        x -= 100 * Gdx.graphics.getDeltaTime();
+        x -= 300 * Gdx.graphics.getDeltaTime();
     }
 }
