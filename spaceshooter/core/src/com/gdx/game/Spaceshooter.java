@@ -22,6 +22,7 @@ import com.gdx.game.collectables.weapons.ShotGun;
 import com.gdx.game.collectables.weapons.Weapon;
 import com.gdx.game.enemys.BasicEnemy;
 import com.gdx.game.enemys.Enemy;
+import com.gdx.game.enemys.FirstBoss;
 import com.gdx.game.holster.WeaponHolster;
 import com.gdx.game.obstacles.Obstacle;
 import com.gdx.game.obstacles.SpaceRock;
@@ -44,11 +45,15 @@ public class Spaceshooter extends ApplicationAdapter {
     private Texture spaceRockImg;
     private Texture rocketLauncherWeaponImg;
     private Texture satelliteImg;
+    private Texture firstBossImg;
 
     private BitmapFont scoreBoardFont;
     private BitmapFont weaponHolsterFont;
 
     private SpaceShip ship;
+
+    private boolean firstBossSpawn;
+    private boolean firstBossAlive;
 
     private int backroundSpeed = 0;
 
@@ -68,6 +73,7 @@ public class Spaceshooter extends ApplicationAdapter {
     private long lastShotGunSpawned;
     private long lastRocketLauncherSpawned;
     private long lastExplosion;
+    private long lastBossSpawned;
 
     private Integer score = 0;
 
@@ -89,6 +95,10 @@ public class Spaceshooter extends ApplicationAdapter {
         spaceRockImg = new Texture("spacerock.png");
         rocketLauncherWeaponImg = new Texture("rocketlauncher.png");
         satelliteImg = new Texture("satellite.png");
+        firstBossImg = new Texture("FirstBoss.png");
+
+        firstBossSpawn=false;
+        firstBossAlive=false;
 
         obstacleTypes = Obstacle.ObstacleType.class.getEnumConstants();
 
@@ -106,7 +116,8 @@ public class Spaceshooter extends ApplicationAdapter {
         explosionEffect.load(Gdx.files.internal("explosion.p"), Gdx.files.internal(""));
         explosionEffect.setPosition(-1000, -1000);
 
-        lastExplosion = 0;
+        lastExplosion=0;
+        lastBossSpawned=0;
 
     }
 
@@ -123,8 +134,16 @@ public class Spaceshooter extends ApplicationAdapter {
 
         batch.draw(shipImg, ship.x, ship.y);
 
-        if (TimeUtils.nanoTime() - lastEnemySpawn > 1000000000 - score * 10000) spawnEnemy(Enemy.EnemyType.BASIC);
+        if(score==500)firstBossSpawn=true;
+        if(TimeUtils.millis()-lastBossSpawned>30000 && firstBossSpawn){
+            lastBossSpawned=TimeUtils.millis();
+            spawnEnemy(Enemy.EnemyType.FIRSTBOSS);
+        }
+
+        if (TimeUtils.nanoTime() - lastEnemySpawn > 1000000000 - score * 10000 && !firstBossAlive) spawnEnemy(Enemy.EnemyType.BASIC);
         if (TimeUtils.millis() - lastObstacleSpawn > 4000 - score * 0.002) spawnObstacle();
+
+
 
         if (score % 200 == 0 && (TimeUtils.millis() - lastShotGunSpawned > 3000) && score > 0) {
             lastShotGunSpawned = TimeUtils.millis();
@@ -306,6 +325,12 @@ public class Spaceshooter extends ApplicationAdapter {
             Enemy enemy = new BasicEnemy(camera.viewportWidth, (MathUtils.random(0, camera.viewportHeight - 64)), basicEnemyImg);
             enemys.add(enemy);
         }
+        if(type == Enemy.EnemyType.FIRSTBOSS){
+            firstBossSpawn=false;
+            firstBossAlive=true;
+            Enemy enemy = new FirstBoss(camera.viewportWidth, (MathUtils.random(0, camera.viewportHeight - 64)), firstBossImg);
+            enemys.add(enemy);
+        }
     }
 
     private void checkBulletImpact() {
@@ -325,6 +350,9 @@ public class Spaceshooter extends ApplicationAdapter {
                         System.out.println("blos");
                     }
                     if (tmpenemy.getLifes() == 0) {
+                        if (tmpenemy.getType()==Enemy.EnemyType.FIRSTBOSS){
+                            firstBossAlive=false;
+                        }
                         eit.remove();
                         createExplosion(tmpenemy.x, tmpenemy.y);
                         score += 10;
