@@ -1,10 +1,10 @@
-package com.gdx.game.collectables.weapons;
+package com.gdx.game.collectibles.weapons;
 
 import com.badlogic.gdx.graphics.Texture;
 import com.gdx.game.bullets.Bullet;
-import com.gdx.game.collectables.Collectable;
+import com.gdx.game.collectibles.Collectible;
 
-public abstract class Weapon extends Collectable {
+public abstract class Weapon extends Collectible {
 
     protected int ammo;
     protected boolean infiniteAmmo;

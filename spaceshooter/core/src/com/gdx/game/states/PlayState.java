@@ -13,11 +13,11 @@ import com.gdx.game.bullets.BasicBullet;
 import com.gdx.game.bullets.Bullet;
 import com.gdx.game.bullets.HomingBullet;
 import com.gdx.game.bullets.ShotgunBullet;
-import com.gdx.game.collectables.Collectable;
-import com.gdx.game.collectables.weapons.BasicWeapon;
-import com.gdx.game.collectables.weapons.RocketLauncher;
-import com.gdx.game.collectables.weapons.ShotGun;
-import com.gdx.game.collectables.weapons.Weapon;
+import com.gdx.game.collectibles.Collectible;
+import com.gdx.game.collectibles.weapons.BasicWeapon;
+import com.gdx.game.collectibles.weapons.RocketLauncher;
+import com.gdx.game.collectibles.weapons.ShotGun;
+import com.gdx.game.collectibles.weapons.Weapon;
 import com.gdx.game.enemys.BasicEnemy;
 import com.gdx.game.enemys.Enemy;
 import com.gdx.game.enemys.FirstBoss;
@@ -56,7 +56,7 @@ public class PlayState extends State {
 
     private LinkedList<Bullet> bullets = new LinkedList<>();
     private LinkedList<Enemy> enemys = new LinkedList<>();
-    private LinkedList<Collectable> collectables = new LinkedList<>();
+    private LinkedList<Collectible> collectibles = new LinkedList<>();
     private LinkedList<Obstacle> obstacles = new LinkedList<>();
     private Obstacle.ObstacleType[] obstacleTypes;
 
@@ -161,10 +161,10 @@ public class PlayState extends State {
         }
 
         if (Gdx.input.isKeyPressed(Input.Keys.T)) {
-            spawnCollectable(Collectable.CollectableType.SHOTGUN, 100);
+            spawnCollectible(Collectible.CollectibleType.SHOTGUN, 100);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.Z)) {
-            spawnCollectable(Collectable.CollectableType.ROCKETLAUNCHER, 10);
+            spawnCollectible(Collectible.CollectibleType.ROCKETLAUNCHER, 10);
         }
         if (Gdx.input.isKeyPressed(Input.Keys.F)) {
             score += 10;
@@ -186,9 +186,9 @@ public class PlayState extends State {
 
         batch.draw(shipImg, ship.x, ship.y);
 
-        if(score==500)firstBossSpawn=true;
-        if(TimeUtils.millis()-lastBossSpawned>900000000 && firstBossSpawn){
-            lastBossSpawned=TimeUtils.millis();
+        if (score == 500) firstBossSpawn = true;
+        if (TimeUtils.millis() - lastBossSpawned > 900000000 && firstBossSpawn) {
+            lastBossSpawned = TimeUtils.millis();
             spawnEnemy(Enemy.EnemyType.FIRSTBOSS);
         }
 
@@ -199,22 +199,22 @@ public class PlayState extends State {
 
         if (score % 200 == 0 && (TimeUtils.millis() - lastShotGunSpawned > 3000) && score > 0) {
             lastShotGunSpawned = TimeUtils.millis();
-            spawnCollectable(Collectable.CollectableType.SHOTGUN, 50);
+            spawnCollectible(Collectible.CollectibleType.SHOTGUN, 50);
         }
 
         if (score % 400 == 0 && (TimeUtils.millis() - lastRocketLauncherSpawned > 3000) && score > 0) {
             lastRocketLauncherSpawned = TimeUtils.millis();
-            spawnCollectable(Collectable.CollectableType.ROCKETLAUNCHER, 10);
+            spawnCollectible(Collectible.CollectibleType.ROCKETLAUNCHER, 10);
         }
 
         moveEnemy();
         moveBullets();
-        moveCollectable();
+        moveCollectible();
         moveObstacle();
         checkObstacleImpact();
         checkBulletImpact();
         checkEnemyImpact();
-        checkCollectableImpact();
+        checkCollectibleImpact();
 
         for (Bullet bullet : bullets) {
             batch.draw(bullet.getTexture(), bullet.x, bullet.y);
@@ -222,8 +222,8 @@ public class PlayState extends State {
         for (Enemy enemy : enemys) {
             batch.draw(enemy.getTexture(), enemy.x, enemy.y);
         }
-        for (Collectable collectable : collectables) {
-            batch.draw(collectable.getTexture(), collectable.x, collectable.y);
+        for (Collectible collectible : collectibles) {
+            batch.draw(collectible.getTexture(), collectible.x, collectible.y);
         }
         for (Obstacle obstacle : obstacles) {
             batch.draw(obstacle.getTexture(), obstacle.x, obstacle.y);
@@ -270,7 +270,8 @@ public class PlayState extends State {
         while (it.hasNext()) {
             Enemy enemy = it.next();
             if (enemy.overlaps(ship)) {
-                it.remove();
+                enemy.deductLife(1);
+                if(enemy.getLifes() == 0) it.remove();
                 ship.deductLife(1);
                 score += 10;
             } else if (enemy.x <= 0) {
@@ -331,14 +332,12 @@ public class PlayState extends State {
     private void spawnEnemy(Enemy.EnemyType type) {
         lastEnemySpawn = TimeUtils.nanoTime();
         if (type == Enemy.EnemyType.BASIC) {
-            Enemy enemy = new BasicEnemy(camera.viewportWidth, (MathUtils.random(0, camera.viewportHeight - 64)), basicEnemyImg);
-            enemys.add(enemy);
+            enemys.add(new BasicEnemy(camera.viewportWidth, (MathUtils.random(0, camera.viewportHeight - 64)), basicEnemyImg));
         }
         if (type == Enemy.EnemyType.FIRSTBOSS) {
             firstBossSpawn = false;
             firstBossAlive = true;
-            Enemy enemy = new FirstBoss(camera.viewportWidth, (MathUtils.random(0, camera.viewportHeight - 64)), firstBossImg);
-            enemys.add(enemy);
+            enemys.add(new FirstBoss(camera.viewportWidth, (MathUtils.random(0, camera.viewportHeight - 64)), firstBossImg));
         }
     }
 
@@ -353,11 +352,7 @@ public class PlayState extends State {
                 Enemy tmpenemy = eit.next();
                 if (tmpbullet.overlaps(tmpenemy)) {
                     tmpenemy.deductLife(tmpbullet.getDamage());
-                    try {
-                        bit.remove();
-                    } catch (Exception e) {
-                        System.out.println("blos");
-                    }
+                    bit.remove();
                     if (tmpenemy.getLifes() == 0) {
                         if (tmpenemy.getType() == Enemy.EnemyType.FIRSTBOSS) {
                             firstBossAlive = false;
@@ -371,33 +366,33 @@ public class PlayState extends State {
         }
     }
 
-    private void spawnCollectable(Collectable.CollectableType type) {
+    private void spawnCollectible(Collectible.CollectibleType type) {
 
     }
 
-    private void spawnCollectable(Collectable.CollectableType type, int ammo) {
-        if (type == Collectable.CollectableType.SHOTGUN) {
+    private void spawnCollectible(Collectible.CollectibleType type, int ammo) {
+        if (type == Collectible.CollectibleType.SHOTGUN) {
             Weapon weapon = new ShotGun(camera.viewportWidth, (MathUtils.random(0, camera.viewportHeight - 64)), shotGunWeaponImg, ammo);
-            collectables.add(weapon);
-        } else if (type == Collectable.CollectableType.ROCKETLAUNCHER) {
+            collectibles.add(weapon);
+        } else if (type == Collectible.CollectibleType.ROCKETLAUNCHER) {
             Weapon weapon = new RocketLauncher(camera.viewportWidth, (MathUtils.random(0, camera.viewportHeight - 64)), rocketLauncherWeaponImg, ammo);
-            collectables.add(weapon);
+            collectibles.add(weapon);
         }
     }
 
-    private void moveCollectable() {
-        for (Collectable collectable : collectables) {
-            collectable.moveEntity();
+    private void moveCollectible() {
+        for (Collectible collectible : collectibles) {
+            collectible.moveEntity();
         }
     }
 
-    private void checkCollectableImpact() {
-        Iterator<Collectable> it = collectables.iterator();
+    private void checkCollectibleImpact() {
+        Iterator<Collectible> it = collectibles.iterator();
         while (it.hasNext()) {
-            Collectable collectable = it.next();
-            if (collectable.overlaps(ship)) {
-                if (Weapon.class.isAssignableFrom(collectable.getClass())) {
-                    weaponHolster.collectWeapon((Weapon) collectable);
+            Collectible collectible = it.next();
+            if (collectible.overlaps(ship)) {
+                if (Weapon.class.isAssignableFrom(collectible.getClass())) {
+                    weaponHolster.collectWeapon((Weapon) collectible);
                     it.remove();
                 }
             }

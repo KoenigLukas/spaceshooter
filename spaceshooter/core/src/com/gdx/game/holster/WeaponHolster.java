@@ -1,7 +1,7 @@
 package com.gdx.game.holster;
 
 import com.gdx.game.bullets.Bullet;
-import com.gdx.game.collectables.weapons.Weapon;
+import com.gdx.game.collectibles.weapons.Weapon;
 
 public class WeaponHolster {
 
