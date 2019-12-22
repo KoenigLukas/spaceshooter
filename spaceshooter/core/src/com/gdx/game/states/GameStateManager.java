@@ -8,6 +8,10 @@ public class GameStateManager {
 
     private Stack<State> states;
 
+    public GameStateManager() {
+        this.states = new Stack<>();
+    }
+
     public void push(State state) {
         states.push(state);
     }

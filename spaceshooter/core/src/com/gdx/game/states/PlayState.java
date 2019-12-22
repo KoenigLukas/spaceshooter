@@ -186,9 +186,9 @@ public class PlayState extends State {
 
         batch.draw(shipImg, ship.x, ship.y);
 
-        if (score == 500) firstBossSpawn = true;
-        if (TimeUtils.millis() - lastBossSpawned > 30000 && firstBossSpawn) {
-            lastBossSpawned = TimeUtils.millis();
+        if(score==500)firstBossSpawn=true;
+        if(TimeUtils.millis()-lastBossSpawned>900000000 && firstBossSpawn){
+            lastBossSpawned=TimeUtils.millis();
             spawnEnemy(Enemy.EnemyType.FIRSTBOSS);
         }
 
