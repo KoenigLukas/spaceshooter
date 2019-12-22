@@ -56,12 +56,10 @@ public class Spaceshooter extends ApplicationAdapter {
     private LinkedList<Enemy> enemys = new LinkedList<>();
     private LinkedList<Collectable> collectables = new LinkedList<>();
     private LinkedList<Obstacle> obstacles = new LinkedList<>();
-    private LinkedList<ParticleEffect> effects = new LinkedList<>();
     private Obstacle.ObstacleType[] obstacleTypes;
 
 
     private ParticleEffect explosionEffect;
-
 
     private long lastBulletSpawn;
     private long lastEnemySpawn;
@@ -105,10 +103,10 @@ public class Spaceshooter extends ApplicationAdapter {
         ship = new BasicSpaceShip(20, (camera.viewportHeight / 2), shipImg);
 
         explosionEffect = new ParticleEffect();
-        explosionEffect.load(Gdx.files.internal("newexplosion.p"),Gdx.files.internal(""));
-        explosionEffect.setPosition(-1000,-1000);
+        explosionEffect.load(Gdx.files.internal("explosion.p"), Gdx.files.internal(""));
+        explosionEffect.setPosition(-1000, -1000);
 
-        lastExplosion=0;
+        lastExplosion = 0;
 
     }
 
@@ -161,24 +159,9 @@ public class Spaceshooter extends ApplicationAdapter {
         }
 
         explosionEffect.start();
-        explosionEffect.draw(batch,Gdx.graphics.getDeltaTime());
+        explosionEffect.draw(batch, Gdx.graphics.getDeltaTime());
 
-        if(TimeUtils.nanoTime()-lastExplosion>100000000)explosionEffect.setPosition(-100,-100);
-
-//        for (ParticleEffect effect : effects) {
-//            effect.start();
-//            effect.draw(batch);
-//        }
-//        Iterator<ParticleEffect> eit = effects.iterator();
-//
-//        while (eit.hasNext()) {
-//            ParticleEffect pe = eit.next();
-//            if (pe.isComplete()) {
-//                eit.remove();
-//            }
-//        }
-
-
+        if (TimeUtils.nanoTime() - lastExplosion > 100000000) explosionEffect.setPosition(-100, -100);
 
         String scoreBoardText;
         scoreBoardText = "Score: " + score + " Lifes: " + ship.getLifes();
@@ -244,6 +227,9 @@ public class Spaceshooter extends ApplicationAdapter {
         if (Gdx.input.isKeyPressed(Input.Keys.Z)) {
             spawnCollectable(Collectable.CollectableType.ROCKETLAUNCHER, 10);
         }
+        if (Gdx.input.isKeyPressed(Input.Keys.F)) {
+            score += 10;
+        }
 
         if (ship.x < 0) ship.x = 0;
         if (ship.y > camera.viewportHeight - ship.height) ship.y = camera.viewportHeight - ship.height;
@@ -267,8 +253,8 @@ public class Spaceshooter extends ApplicationAdapter {
     }
 
     private void createExplosion(float x, float y) {
-            explosionEffect.setPosition(x, y);
-            lastExplosion = TimeUtils.nanoTime();
+        explosionEffect.setPosition(x, y);
+        lastExplosion = TimeUtils.nanoTime();
     }
 
     private void moveBullets() {
@@ -286,18 +272,13 @@ public class Spaceshooter extends ApplicationAdapter {
     private void spawnBullet(Bullet.BulletType type) {
         lastBulletSpawn = TimeUtils.nanoTime();
         if (type == Bullet.BulletType.BASIC) {
-            Bullet bullet = new BasicBullet(ship.x, ship.y, basicBulletImg);
-            bullets.add(bullet);
+            bullets.add(new BasicBullet(ship.x, ship.y, basicBulletImg));
         } else if (type == Bullet.BulletType.SHOTGUN) {
-            Bullet bullet = new ShotgunBullet(ship.x, ship.y, shotgunBulletImg, ShotgunBullet.BulletDirection.STRAIGHT);
-            Bullet bullet2 = new ShotgunBullet(ship.x, ship.y, shotgunBulletImg, ShotgunBullet.BulletDirection.DIAGONALUP);
-            Bullet bullet3 = new ShotgunBullet(ship.x, ship.y, shotgunBulletImg, ShotgunBullet.BulletDirection.DIAGONALDOWN);
-            bullets.add(bullet);
-            bullets.add(bullet2);
-            bullets.add(bullet3);
+            bullets.add(new ShotgunBullet(ship.x, ship.y, shotgunBulletImg, ShotgunBullet.BulletDirection.STRAIGHT));
+            bullets.add(new ShotgunBullet(ship.x, ship.y, shotgunBulletImg, ShotgunBullet.BulletDirection.DIAGONALUP));
+            bullets.add(new ShotgunBullet(ship.x, ship.y, shotgunBulletImg, ShotgunBullet.BulletDirection.DIAGONALDOWN));
         } else if (type == Bullet.BulletType.HOMINGBULLET) {
-            Bullet bullet = new HomingBullet(ship.x, ship.y, Bullet.BulletType.HOMINGBULLET, homingBulletImg, enemys);
-            bullets.add(bullet);
+            bullets.add( new HomingBullet(ship.x, ship.y, Bullet.BulletType.HOMINGBULLET, homingBulletImg, enemys));
         }
     }
 
@@ -305,11 +286,11 @@ public class Spaceshooter extends ApplicationAdapter {
         Obstacle.ObstacleType type = obstacleTypes[(int) (Math.random() * 10) % obstacleTypes.length];
 
         Obstacle obstacle = null;
-        if(type == Obstacle.ObstacleType.ROCK)
-            obstacle= new SpaceRock(camera.viewportWidth, (MathUtils.random(0, camera.viewportHeight - 64)), spaceRockImg);
-        if(type == Obstacle.ObstacleType.SATELLITE)
-            obstacle= new SpaceRock(camera.viewportWidth, (MathUtils.random(0, camera.viewportHeight - 64)), satelliteImg);
-        if(obstacle!=null) obstacles.add(obstacle);
+        if (type == Obstacle.ObstacleType.ROCK)
+            obstacle = new SpaceRock(camera.viewportWidth, (MathUtils.random(0, camera.viewportHeight - 64)), spaceRockImg);
+        if (type == Obstacle.ObstacleType.SATELLITE)
+            obstacle = new SpaceRock(camera.viewportWidth, (MathUtils.random(0, camera.viewportHeight - 64)), satelliteImg);
+        if (obstacle != null) obstacles.add(obstacle);
         lastObstacleSpawn = TimeUtils.millis();
     }
 
@@ -340,7 +321,7 @@ public class Spaceshooter extends ApplicationAdapter {
                     tmpenemy.deductLife(tmpbullet.getDamage());
                     try {
                         bit.remove();
-                    }catch (Exception e){
+                    } catch (Exception e) {
                         System.out.println("blos");
                     }
                     if (tmpenemy.getLifes() == 0) {
