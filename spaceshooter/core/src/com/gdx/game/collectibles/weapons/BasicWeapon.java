@@ -1,4 +1,4 @@
-package com.gdx.game.collectables.weapons;
+package com.gdx.game.collectibles.weapons;
 
 
 import com.gdx.game.bullets.Bullet;

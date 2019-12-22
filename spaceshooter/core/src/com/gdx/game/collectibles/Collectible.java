@@ -1,14 +1,14 @@
-package com.gdx.game.collectables;
+package com.gdx.game.collectibles;
 
 
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.math.Rectangle;
 
-public abstract class Collectable extends Rectangle {
+public abstract class Collectible extends Rectangle {
 
     private Texture texture;
 
-    public Collectable(float x, float y, float width, float height, Texture texture) {
+    public Collectible(float x, float y, float width, float height, Texture texture) {
         super(x, y, width, height);
         this.texture = texture;
     }
@@ -19,7 +19,7 @@ public abstract class Collectable extends Rectangle {
         return texture;
     }
 
-    public enum CollectableType {
+    public enum CollectibleType {
         SHOTGUN,
         ROCKETLAUNCHER,
     }
