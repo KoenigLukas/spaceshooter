@@ -3,8 +3,12 @@ package com.gdx.game.enemys;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.TimeUtils;
+import com.gdx.game.bullets.BasicBullet;
+import com.gdx.game.bullets.Bullet;
 import com.gdx.game.spaceships.BasicSpaceShip;
+import com.gdx.game.spaceships.SpaceShip;
 
+import java.util.LinkedList;
 import java.util.Random;
 
 public class FirstBoss extends Enemy {
@@ -12,7 +16,10 @@ public class FirstBoss extends Enemy {
     private int rand;
     private long lastRand;
     private int randcount;
-    private BasicSpaceShip ship;
+    private SpaceShip ship;
+    private LinkedList<Bullet> bullets;
+    private long lastBulletSpawn;
+    private Texture bulletImg;
 
     public FirstBoss(float x, float y, Texture texture) {
         super(x, y, 128, 128, 0, 10, EnemyType.FIRSTBOSS, texture);
@@ -20,6 +27,10 @@ public class FirstBoss extends Enemy {
         rand=0;
         lastRand=0;
         randcount=0;
+        bullets = new LinkedList<>();
+        lastBulletSpawn=0;
+        bulletImg = new Texture("bullet.png");
+        ship = new BasicSpaceShip(0,0,bulletImg);
     }
 
     @Override
@@ -49,16 +60,26 @@ public class FirstBoss extends Enemy {
             }
         }
 
+        if(ship.y==this.y)shootBullet();                    //Wenn der Boss auf der gleichen Hähe wie der Ship ist -> Shoot
+
     }
 
     @Override
     public void shootBullet() {
-
+        if(TimeUtils.nanoTime()-lastBulletSpawn>3000) {
+            lastBulletSpawn = TimeUtils.nanoTime();
+            bullets.add(new BasicBullet(this.x, this.y, bulletImg));
+        }
     }
 
-    public void renewShip(BasicSpaceShip ship){
-        this.ship=ship;
+    @Override
+    public LinkedList<Bullet> getBullets() {
+        return bullets;
     }
 
+    @Override
+    public void setShip(SpaceShip ship) {
+        this.ship = ship;
+    }
 
 }

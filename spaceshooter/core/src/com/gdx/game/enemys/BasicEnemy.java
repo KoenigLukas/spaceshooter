@@ -2,8 +2,14 @@ package com.gdx.game.enemys;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
+import com.gdx.game.bullets.Bullet;
+import com.gdx.game.spaceships.SpaceShip;
+
+import java.util.LinkedList;
 
 public class BasicEnemy extends Enemy {
+
+    private SpaceShip ship;
 
     public BasicEnemy(float x, float y, Texture texture) {
         super(x, y, 64, 64, 0, 1, EnemyType.BASIC, texture);
@@ -18,5 +24,15 @@ public class BasicEnemy extends Enemy {
     @Override
     public void shootBullet() {
 
+    }
+
+    @Override
+    public LinkedList<Bullet> getBullets() {
+        return null;
+    }
+
+    @Override
+    public void setShip(SpaceShip ship) {
+        this.ship = ship;
     }
 }

@@ -75,6 +75,7 @@ public class PlayState extends State {
     private Integer score = 0;
 
     private WeaponHolster weaponHolster;
+    private FirstBoss firstBoss;
 
     public PlayState(GameStateManager gsm) {
         super(gsm);
@@ -91,6 +92,8 @@ public class PlayState extends State {
         rocketLauncherWeaponImg = new Texture("rocketlauncher.png");
         satelliteImg = new Texture("satellite.png");
         firstBossImg = new Texture("FirstBoss.png");
+
+        firstBoss=null;
 
         firstBossSpawn = false;
         firstBossAlive = false;
@@ -208,19 +211,34 @@ public class PlayState extends State {
         }
 
         moveEnemy();
-        moveBullets();
+        moveBullets(bullets);                                                                                                          //Bullets vom Ship
+        checkBulletImpact(bullets);
+
+        if(firstBossAlive&&firstBoss!=null) {
+            moveBullets(firstBoss.getBullets());
+            checkBulletImpact(firstBoss.getBullets());                                                                                                    //Bullets vom ersten Boss
+        }
+
         moveCollectable();
         moveObstacle();
         checkObstacleImpact();
-        checkBulletImpact();
+
         checkEnemyImpact();
         checkCollectableImpact();
 
         for (Bullet bullet : bullets) {
             batch.draw(bullet.getTexture(), bullet.x, bullet.y);
         }
+        if(firstBossAlive) {
+            for (Bullet bullet : firstBoss.getBullets()) {
+                batch.draw(bullet.getTexture(), bullet.x, bullet.y);
+            }
+        }
+
         for (Enemy enemy : enemys) {
             batch.draw(enemy.getTexture(), enemy.x, enemy.y);
+            if(enemy.getType()== Enemy.EnemyType.FIRSTBOSS)
+                enemy.setShip(ship);                                                     //Übergibt das "Player-Ship"
         }
         for (Collectable collectable : collectables) {
             batch.draw(collectable.getTexture(), collectable.x, collectable.y);
@@ -285,7 +303,7 @@ public class PlayState extends State {
         lastExplosion = TimeUtils.nanoTime();
     }
 
-    private void moveBullets() {
+    private void moveBullets(LinkedList<Bullet> bullets) {
         for (Bullet bullet : bullets) {
             bullet.moveBullet();
         }
@@ -337,12 +355,13 @@ public class PlayState extends State {
         if (type == Enemy.EnemyType.FIRSTBOSS) {
             firstBossSpawn = false;
             firstBossAlive = true;
-            Enemy enemy = new FirstBoss(camera.viewportWidth, (MathUtils.random(0, camera.viewportHeight - 64)), firstBossImg);
-            enemys.add(enemy);
+            FirstBoss fb = new FirstBoss(camera.viewportWidth, (MathUtils.random(0, camera.viewportHeight - 64)), firstBossImg);
+            firstBoss = fb;
+            enemys.add(fb);
         }
     }
 
-    private void checkBulletImpact() {
+    private void checkBulletImpact(LinkedList<Bullet> bullets) {
         Iterator<Bullet> bit = bullets.iterator();
         while (bit.hasNext()) {
             Bullet tmpbullet = bit.next();
