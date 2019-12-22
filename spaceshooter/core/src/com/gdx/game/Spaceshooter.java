@@ -50,7 +50,7 @@ public class Spaceshooter extends ApplicationAdapter {
     private BitmapFont scoreBoardFont;
     private BitmapFont weaponHolsterFont;
 
-    private SpaceShip ship;
+    SpaceShip ship;
 
     private boolean firstBossSpawn;
     private boolean firstBossAlive;
@@ -134,9 +134,9 @@ public class Spaceshooter extends ApplicationAdapter {
 
         batch.draw(shipImg, ship.x, ship.y);
 
-        if (score == 500) firstBossSpawn = true;
-        if (TimeUtils.millis() - lastBossSpawned > 30000 && firstBossSpawn) {
-            lastBossSpawned = TimeUtils.millis();
+        if(score==500)firstBossSpawn=true;
+        if(TimeUtils.millis()-lastBossSpawned>900000000 && firstBossSpawn){
+            lastBossSpawned=TimeUtils.millis();
             spawnEnemy(Enemy.EnemyType.FIRSTBOSS);
         }
 
@@ -183,7 +183,7 @@ public class Spaceshooter extends ApplicationAdapter {
         if (TimeUtils.nanoTime() - lastExplosion > 100000000) explosionEffect.setPosition(-100, -100);
 
         String scoreBoardText;
-        scoreBoardText = "Score: " + score + " Lifes: " + ship.getLifes();
+        scoreBoardText = "Score: " + score + " Lives: " + ship.getLifes();
         scoreBoardFont.draw(batch, scoreBoardText, 10, camera.viewportHeight - 10);
         scoreBoardFont.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         scoreBoardFont.getData().setScale(3, 3);
