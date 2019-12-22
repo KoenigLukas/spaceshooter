@@ -14,7 +14,7 @@ public class ShotgunBullet extends Bullet {
     }
 
     public ShotgunBullet(float x, float y, Texture texture, BulletDirection direction) {
-        super(x, y, 32, 32, 2, 1, BulletType.SHOTGUN, texture);
+        super(x, y, 32, 32, 1, 1, BulletType.SHOTGUN, texture);
         this.direction = direction;
     }
 
