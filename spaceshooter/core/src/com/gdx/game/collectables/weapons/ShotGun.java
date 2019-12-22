@@ -6,8 +6,8 @@ import com.gdx.game.bullets.Bullet;
 
 public class ShotGun extends Weapon {
 
-    public ShotGun(float x, float y, Texture texture,int ammo) {
-        super(x, y, 64, 32, texture, Bullet.BulletType.SHOTGUN,ammo);
+    public ShotGun(float x, float y, Texture texture, int ammo) {
+        super(x, y, 64, 32, texture, Bullet.BulletType.SHOTGUN, ammo);
     }
 
     @Override

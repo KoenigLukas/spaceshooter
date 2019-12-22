@@ -11,7 +11,7 @@ public abstract class Bullet extends Rectangle {
     private Texture texture;
     private BulletType type;
 
-    public Bullet(float x, float y, float width, float height, int damage, float movSpeedFactor, BulletType type,Texture texture) {
+    public Bullet(float x, float y, float width, float height, int damage, float movSpeedFactor, BulletType type, Texture texture) {
         super(x, y, width, height);
         this.damage = damage;
         this.movSpeedFactor = movSpeedFactor;
@@ -50,7 +50,7 @@ public abstract class Bullet extends Rectangle {
             this.delay = delay;
         }
 
-        public int getDelay(){
+        public int getDelay() {
             return this.delay;
         }
     }

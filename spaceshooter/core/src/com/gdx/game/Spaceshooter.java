@@ -97,8 +97,8 @@ public class Spaceshooter extends ApplicationAdapter {
         satelliteImg = new Texture("satellite.png");
         firstBossImg = new Texture("FirstBoss.png");
 
-        firstBossSpawn=false;
-        firstBossAlive=false;
+        firstBossSpawn = false;
+        firstBossAlive = false;
 
         obstacleTypes = Obstacle.ObstacleType.class.getEnumConstants();
 
@@ -116,8 +116,8 @@ public class Spaceshooter extends ApplicationAdapter {
         explosionEffect.load(Gdx.files.internal("explosion.p"), Gdx.files.internal(""));
         explosionEffect.setPosition(-1000, -1000);
 
-        lastExplosion=0;
-        lastBossSpawned=0;
+        lastExplosion = 0;
+        lastBossSpawned = 0;
 
     }
 
@@ -134,15 +134,15 @@ public class Spaceshooter extends ApplicationAdapter {
 
         batch.draw(shipImg, ship.x, ship.y);
 
-        if(score==500)firstBossSpawn=true;
-        if(TimeUtils.millis()-lastBossSpawned>30000 && firstBossSpawn){
-            lastBossSpawned=TimeUtils.millis();
+        if (score == 500) firstBossSpawn = true;
+        if (TimeUtils.millis() - lastBossSpawned > 30000 && firstBossSpawn) {
+            lastBossSpawned = TimeUtils.millis();
             spawnEnemy(Enemy.EnemyType.FIRSTBOSS);
         }
 
-        if (TimeUtils.nanoTime() - lastEnemySpawn > 1000000000 - score * 10000 && !firstBossAlive) spawnEnemy(Enemy.EnemyType.BASIC);
+        if (TimeUtils.nanoTime() - lastEnemySpawn > 1000000000 - score * 10000 && !firstBossAlive)
+            spawnEnemy(Enemy.EnemyType.BASIC);
         if (TimeUtils.millis() - lastObstacleSpawn > 4000 - score * 0.002) spawnObstacle();
-
 
 
         if (score % 200 == 0 && (TimeUtils.millis() - lastShotGunSpawned > 3000) && score > 0) {
@@ -297,7 +297,7 @@ public class Spaceshooter extends ApplicationAdapter {
             bullets.add(new ShotgunBullet(ship.x, ship.y, shotgunBulletImg, ShotgunBullet.BulletDirection.DIAGONALUP));
             bullets.add(new ShotgunBullet(ship.x, ship.y, shotgunBulletImg, ShotgunBullet.BulletDirection.DIAGONALDOWN));
         } else if (type == Bullet.BulletType.HOMINGBULLET) {
-            bullets.add( new HomingBullet(ship.x, ship.y, Bullet.BulletType.HOMINGBULLET, homingBulletImg, enemys));
+            bullets.add(new HomingBullet(ship.x, ship.y, Bullet.BulletType.HOMINGBULLET, homingBulletImg, enemys));
         }
     }
 
@@ -325,9 +325,9 @@ public class Spaceshooter extends ApplicationAdapter {
             Enemy enemy = new BasicEnemy(camera.viewportWidth, (MathUtils.random(0, camera.viewportHeight - 64)), basicEnemyImg);
             enemys.add(enemy);
         }
-        if(type == Enemy.EnemyType.FIRSTBOSS){
-            firstBossSpawn=false;
-            firstBossAlive=true;
+        if (type == Enemy.EnemyType.FIRSTBOSS) {
+            firstBossSpawn = false;
+            firstBossAlive = true;
             Enemy enemy = new FirstBoss(camera.viewportWidth, (MathUtils.random(0, camera.viewportHeight - 64)), firstBossImg);
             enemys.add(enemy);
         }
@@ -350,8 +350,8 @@ public class Spaceshooter extends ApplicationAdapter {
                         System.out.println("blos");
                     }
                     if (tmpenemy.getLifes() == 0) {
-                        if (tmpenemy.getType()==Enemy.EnemyType.FIRSTBOSS){
-                            firstBossAlive=false;
+                        if (tmpenemy.getType() == Enemy.EnemyType.FIRSTBOSS) {
+                            firstBossAlive = false;
                         }
                         eit.remove();
                         createExplosion(tmpenemy.x, tmpenemy.y);

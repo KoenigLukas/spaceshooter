@@ -4,13 +4,11 @@ import com.badlogic.gdx.graphics.Texture;
 import com.gdx.game.bullets.Bullet;
 import com.gdx.game.collectables.Collectable;
 
-import java.util.Objects;
-
 public abstract class Weapon extends Collectable {
 
-    private Bullet.BulletType bulletType;
     protected int ammo;
     protected boolean infiniteAmmo;
+    private Bullet.BulletType bulletType;
 
     public Weapon(float x, float y, float width, float height, Texture texture, Bullet.BulletType bulletType, int ammo) {
         super(x, y, width, height, texture);
@@ -18,12 +16,12 @@ public abstract class Weapon extends Collectable {
         this.ammo = ammo;
     }
 
-    public boolean useWeapon(){
+    public boolean useWeapon() {
         if (!infiniteAmmo) ammo--;
         return ammo > 0;
     }
 
-    public void collectAmmo(int amount){
+    public void collectAmmo(int amount) {
         ammo += amount;
     }
 

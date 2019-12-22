@@ -10,14 +10,14 @@ import java.util.LinkedList;
 public class HomingBullet extends Bullet {
 
     LinkedList<Enemy> enemyList = new LinkedList<>();
-    private boolean targetaquired=false;
     Iterator<Enemy> enemyIterator;
     Enemy enemy;
+    private boolean targetaquired = false;
 
     public HomingBullet(float x, float y, BulletType type, Texture texture, LinkedList<Enemy> enemyList) {
         super(x, y, 32, 32, 5, 0, type, texture);
         this.enemyList = enemyList;
-        enemy=null;
+        enemy = null;
 
     }
 
@@ -47,7 +47,7 @@ public class HomingBullet extends Bullet {
             } else if (enemy.y < y - 10) {
                 y -= Gdx.graphics.getDeltaTime() * enemy.getSpeed() * 100;                    //Move y
             }
-        }   else {
+        } else {
             x += Gdx.graphics.getDeltaTime() * 100;
         }
     }

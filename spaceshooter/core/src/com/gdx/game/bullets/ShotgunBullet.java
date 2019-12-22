@@ -7,12 +7,6 @@ public class ShotgunBullet extends Bullet {
 
     BulletDirection direction;
 
-    public enum BulletDirection {
-        STRAIGHT,
-        DIAGONALUP,
-        DIAGONALDOWN,
-    }
-
     public ShotgunBullet(float x, float y, Texture texture, BulletDirection direction) {
         super(x, y, 32, 32, 2, 1, BulletType.SHOTGUN, texture);
         this.direction = direction;
@@ -29,6 +23,12 @@ public class ShotgunBullet extends Bullet {
             this.x += 100 * Gdx.graphics.getDeltaTime() + movSpeedFactor;
             this.y -= 30 * Gdx.graphics.getDeltaTime() + movSpeedFactor;
         }
+    }
+
+    public enum BulletDirection {
+        STRAIGHT,
+        DIAGONALUP,
+        DIAGONALDOWN,
     }
 
 }

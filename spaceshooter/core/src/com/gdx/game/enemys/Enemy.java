@@ -8,10 +8,10 @@ public abstract class Enemy extends Rectangle {
 
     protected float movSpeedFactor;
     protected int lifes;
+    protected float speed;
     private Texture texture;
     private EnemyType type;
     private boolean targeted = false;
-    protected float speed;
 
     public Enemy(float x, float y, float width, float height, float movSpeedFactor, int lifes, EnemyType type, Texture texture) {
         super(x, y, width, height);
@@ -22,11 +22,12 @@ public abstract class Enemy extends Rectangle {
     }
 
     public abstract void moveEnemy(int score);
+
     public abstract void shootBullet();
 
-    public void deductLife(int damage){
+    public void deductLife(int damage) {
         lifes -= damage;
-        if(lifes < 0) lifes = 0;
+        if (lifes < 0) lifes = 0;
     }
 
     public float getMovSpeedFactor() {
