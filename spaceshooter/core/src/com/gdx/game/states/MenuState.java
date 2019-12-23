@@ -1,21 +1,15 @@
 package com.gdx.game.states;
 
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 
-public class MenuState extends State {
+import com.badlogic.gdx.graphics.OrthographicCamera;
+import com.gdx.game.Spaceshooter;
 
-    public MenuState(GameStateManager gsm) {
-        super(gsm);
-    }
+public class MenuState extends AbstractScreen {
 
-    @Override
-    public void update(float dt) {
 
-    }
-
-    @Override
-    public void render(SpriteBatch sb) {
-
+    public MenuState(Spaceshooter game) {
+        super(game);
+        camera = new OrthographicCamera();
     }
 
     @Override
@@ -24,7 +18,37 @@ public class MenuState extends State {
     }
 
     @Override
-    protected void dispose() {
+    public void show() {
+
+    }
+
+    @Override
+    public void render(float delta) {
+
+    }
+
+    @Override
+    public void resize(int width, int height) {
+
+    }
+
+    @Override
+    public void pause() {
+
+    }
+
+    @Override
+    public void resume() {
+
+    }
+
+    @Override
+    public void hide() {
+
+    }
+
+    @Override
+    public void dispose() {
 
     }
 }

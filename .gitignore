@@ -115,3 +115,5 @@ spaceshooter/gradlew.bat
 spaceshooter/gradlew
 spaceshooter/gradle.properties
 spaceshooter/build.gradle
+spaceshooter/gradle/wrapper/gradle-wrapper.jar
+spaceshooter/gradle/wrapper/gradle-wrapper.properties

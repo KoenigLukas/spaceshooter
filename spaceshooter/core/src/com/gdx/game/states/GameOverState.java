@@ -1,34 +1,14 @@
 package com.gdx.game.states;
 
-import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.OrthographicCamera;
-import com.badlogic.gdx.graphics.Texture;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
-import com.badlogic.gdx.graphics.g2d.SpriteBatch;
+import com.gdx.game.Spaceshooter;
 
-public class GameOverState extends State {
+public class GameOverState extends AbstractScreen {
 
-    private BitmapFont text;
 
-    public GameOverState(GameStateManager gsm) {
-        super(gsm);
+    public GameOverState(Spaceshooter game) {
+        super(game);
         camera = new OrthographicCamera();
-        text = new BitmapFont();
-    }
-
-    @Override
-    public void update(float dt) {
-        handleInput();
-    }
-
-    @Override
-    public void render(SpriteBatch batch) {
-        batch.setProjectionMatrix(camera.combined);
-        batch.begin();
-
-
-
-        batch.end();
     }
 
     @Override
@@ -37,7 +17,40 @@ public class GameOverState extends State {
     }
 
     @Override
-    protected void dispose() {
+    public void show() {
+
+    }
+
+    @Override
+    public void render(float delta) {
+        handleInput();
+
+        batch.setProjectionMatrix(camera.combined);
+        batch.begin();
+    }
+
+    @Override
+    public void resize(int width, int height) {
+
+    }
+
+    @Override
+    public void pause() {
+
+    }
+
+    @Override
+    public void resume() {
+
+    }
+
+    @Override
+    public void hide() {
+
+    }
+
+    @Override
+    public void dispose() {
 
     }
 }

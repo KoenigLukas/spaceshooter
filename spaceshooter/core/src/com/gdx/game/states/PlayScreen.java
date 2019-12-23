@@ -1,5 +1,6 @@
 package com.gdx.game.states;
 
+import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
 import com.badlogic.gdx.graphics.OrthographicCamera;
@@ -9,6 +10,7 @@ import com.badlogic.gdx.graphics.g2d.ParticleEffect;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.math.MathUtils;
 import com.badlogic.gdx.utils.TimeUtils;
+import com.gdx.game.Spaceshooter;
 import com.gdx.game.bullets.BasicBullet;
 import com.gdx.game.bullets.Bullet;
 import com.gdx.game.bullets.HomingBullet;
@@ -30,7 +32,7 @@ import com.gdx.game.spaceships.SpaceShip;
 import java.util.Iterator;
 import java.util.LinkedList;
 
-public class PlayState extends State {
+public class PlayScreen extends AbstractScreen {
 
     private Texture shipImg;
     private Texture basicBulletImg;
@@ -77,8 +79,8 @@ public class PlayState extends State {
     private WeaponHolster weaponHolster;
     private FirstBoss firstBoss;
 
-    public PlayState(GameStateManager gsm) {
-        super(gsm);
+    public PlayScreen(Spaceshooter game) {
+        super(game);
 
         background = new Texture("backgroundnew.jpg");
         background.setWrap(Texture.TextureWrap.Repeat, Texture.TextureWrap.Repeat);
@@ -116,11 +118,6 @@ public class PlayState extends State {
 
         lastExplosion = 0;
         lastBossSpawned = 0;
-    }
-
-    @Override
-    public void update(float dt) {
-        handleInput();
     }
 
     @Override
@@ -180,7 +177,14 @@ public class PlayState extends State {
     }
 
     @Override
-    public void render(SpriteBatch batch) {
+    public void show() {
+
+    }
+
+    @Override
+    public void render(float delta) {
+        handleInput();
+
         batch.setProjectionMatrix(camera.combined);
         batch.begin();
 
@@ -267,13 +271,33 @@ public class PlayState extends State {
         weaponHolsterFont.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         weaponHolsterFont.getData().setScale(2, 2);
 
-        if(ship.getLifes() == 0) gsm.push(new GameOverState(gsm));
+//        if(ship.getLifes() == 0) gsm.push(new GameOverState(gsm));
 
         batch.end();
     }
 
     @Override
-    protected void dispose() {
+    public void resize(int width, int height) {
+
+    }
+
+    @Override
+    public void pause() {
+
+    }
+
+    @Override
+    public void resume() {
+
+    }
+
+    @Override
+    public void hide() {
+
+    }
+
+    @Override
+    public void dispose() {
         shipImg.dispose();
         basicBulletImg.dispose();
         basicEnemyImg.dispose();
