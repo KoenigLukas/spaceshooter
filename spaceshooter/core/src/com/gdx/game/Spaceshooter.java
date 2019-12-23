@@ -5,7 +5,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 //import com.gdx.game.states.GameStateManager;
-import com.gdx.game.states.PlayScreen;
+import com.gdx.game.screens.PlayScreen;
 
 public class Spaceshooter extends Game {
 

@@ -1,4 +1,4 @@
-package com.gdx.game.states;
+package com.gdx.game.screens;
 
 import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.gdx.game.Spaceshooter;
