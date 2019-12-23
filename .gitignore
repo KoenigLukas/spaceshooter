@@ -110,3 +110,8 @@ gradle-app.setting
 # End of https://www.gitignore.io/api/gradle,intellij+all
 spaceshooter/.idea/workspace.xml
 spaceshooter/.idea/workspace.xml
+spaceshooter/settings.gradle
+spaceshooter/gradlew.bat
+spaceshooter/gradlew
+spaceshooter/gradle.properties
+spaceshooter/build.gradle
