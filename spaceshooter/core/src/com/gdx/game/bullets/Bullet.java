@@ -10,6 +10,7 @@ public abstract class Bullet extends Rectangle {
     protected float movSpeedFactor;
     private Texture texture;
     private BulletType type;
+    protected BulletDirection direction;
 
     public Bullet(float x, float y, float width, float height, int damage, float movSpeedFactor, BulletType type, Texture texture) {
         super(x, y, width, height);
@@ -17,7 +18,7 @@ public abstract class Bullet extends Rectangle {
         this.movSpeedFactor = movSpeedFactor;
         this.texture = texture;
         this.type = type;
-
+        this.direction = BulletDirection.STRAIGHT;
     }
 
     public abstract void moveBullet();
@@ -38,6 +39,14 @@ public abstract class Bullet extends Rectangle {
         return type;
     }
 
+    public BulletDirection getDirection() {
+        return direction;
+    }
+
+    public void setDirection(BulletDirection direction) {
+        this.direction = direction;
+    }
+
     public enum BulletType {
         BASIC(500000000),
         SHOTGUN(900000000),
@@ -53,5 +62,12 @@ public abstract class Bullet extends Rectangle {
         public int getDelay() {
             return this.delay;
         }
+    }
+
+    public enum BulletDirection {
+        STRAIGHT,
+        DIAGONALUP,
+        DIAGONALDOWN,
+        BACK,
     }
 }

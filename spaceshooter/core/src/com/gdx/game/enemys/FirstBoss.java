@@ -41,9 +41,9 @@ public class FirstBoss extends Enemy {
         }else {
             if(TimeUtils.millis()-lastRand>600) {
                 int randsave = rand;
-                rand = r.nextInt(2);                        //Get new Random movements every 600ms
+                rand = r.nextInt(2);     //Get new Random movements every 600ms
 
-                if(rand==randsave)randcount++;                     //3 mal selbe Richtung -> Richtung changen
+                if(rand==randsave)randcount++;   //3 mal selbe Richtung -> Richtung changen
                 else randcount=0;
 
                 if(randcount>2){
@@ -53,14 +53,14 @@ public class FirstBoss extends Enemy {
 
                 lastRand=TimeUtils.millis();
             }
-            if(rand>0&&this.y<600){                                 //Random auf und ab
+            if(rand>0&&this.y<600){    //Random auf und ab
                 this.y+=speed;
             }else if(this.y>0){
                 this.y-=speed;
             }
         }
 
-        if(ship.y==this.y)shootBullet();                    //Wenn der Boss auf der gleichen Hähe wie der Ship ist -> Shoot
+        if(ship.y==this.y) shootBullet();   //Wenn der Boss auf der gleichen Hähe wie der Ship ist -> Shoot
 
     }
 

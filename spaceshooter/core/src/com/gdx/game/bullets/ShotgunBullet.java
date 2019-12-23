@@ -25,11 +25,6 @@ public class ShotgunBullet extends Bullet {
         }
     }
 
-    public enum BulletDirection {
-        STRAIGHT,
-        DIAGONALUP,
-        DIAGONALDOWN,
-    }
 
 }
 

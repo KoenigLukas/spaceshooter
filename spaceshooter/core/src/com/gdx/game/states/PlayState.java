@@ -1,4 +1,3 @@
-
 package com.gdx.game.states;
 
 import com.badlogic.gdx.Gdx;
@@ -19,7 +18,6 @@ import com.gdx.game.collectibles.weapons.BasicWeapon;
 import com.gdx.game.collectibles.weapons.RocketLauncher;
 import com.gdx.game.collectibles.weapons.ShotGun;
 import com.gdx.game.collectibles.weapons.Weapon;
-import com.gdx.game.collectibles.Collectible;
 import com.gdx.game.enemys.BasicEnemy;
 import com.gdx.game.enemys.Enemy;
 import com.gdx.game.enemys.FirstBoss;
@@ -58,7 +56,7 @@ public class PlayState extends State {
 
     private LinkedList<Bullet> bullets = new LinkedList<>();
     private LinkedList<Enemy> enemys = new LinkedList<>();
-    private LinkedList<Collectible> collectables = new LinkedList<>();
+    private LinkedList<Collectible> collectibles = new LinkedList<>();
     private LinkedList<Obstacle> obstacles = new LinkedList<>();
     private Obstacle.ObstacleType[] obstacleTypes;
 
@@ -191,6 +189,7 @@ public class PlayState extends State {
 
         batch.draw(shipImg, ship.x, ship.y);
 
+
         if (score == 500) firstBossSpawn = true;
         if (TimeUtils.millis() - lastBossSpawned > 900000000 && firstBossSpawn) {
             lastBossSpawned = TimeUtils.millis();
@@ -213,20 +212,20 @@ public class PlayState extends State {
         }
 
         moveEnemy();
-        moveBullets(bullets);                                                                                                          //Bullets vom Ship
+        moveBullets(bullets);    //Bullets vom Ship
         checkBulletImpact(bullets);
 
         if (firstBossAlive && firstBoss != null) {
+            bullets.addAll(firstBoss.getBullets());
             moveBullets(firstBoss.getBullets());
-            checkBulletImpact(firstBoss.getBullets());                                                                                                    //Bullets vom ersten Boss
+            checkBulletImpact(firstBoss.getBullets());   //Bullets vom ersten Boss
         }
 
-        moveCollectable();
+        moveCollectible();
         moveObstacle();
         checkObstacleImpact();
-
         checkEnemyImpact();
-        checkCollectableImpact();
+        checkCollectibleImpact();
 
         for (Bullet bullet : bullets) {
             batch.draw(bullet.getTexture(), bullet.x, bullet.y);
@@ -240,9 +239,9 @@ public class PlayState extends State {
         for (Enemy enemy : enemys) {
             batch.draw(enemy.getTexture(), enemy.x, enemy.y);
             if (enemy.getType() == Enemy.EnemyType.FIRSTBOSS)
-                enemy.setShip(ship);                                                     //Übergibt das "Player-Ship"
+                enemy.setShip(ship);  //Übergibt das "Player-Ship"
         }
-        for (Collectible collectible : collectables) {
+        for (Collectible collectible : collectibles) {
             batch.draw(collectible.getTexture(), collectible.x, collectible.y);
         }
         for (Obstacle obstacle : obstacles) {
@@ -268,6 +267,8 @@ public class PlayState extends State {
         weaponHolsterFont.getRegion().getTexture().setFilter(Texture.TextureFilter.Linear, Texture.TextureFilter.Linear);
         weaponHolsterFont.getData().setScale(2, 2);
 
+        if(ship.getLifes() == 0) gsm.push(new GameOverState(gsm));
+
         batch.end();
     }
 
@@ -291,8 +292,8 @@ public class PlayState extends State {
             Enemy enemy = it.next();
             if (enemy.overlaps(ship)) {
                 enemy.deductLife(1);
-                if(enemy.getLifes() == 0)it.remove();
-                if(enemy.getType() == Enemy.EnemyType.FIRSTBOSS) firstBossAlive = false;
+                if (enemy.getLifes() == 0) it.remove();
+                if (enemy.getType() == Enemy.EnemyType.FIRSTBOSS) firstBossAlive = false;
                 ship.deductLife(1);
                 score += 10;
             } else if (enemy.x <= 0) {
@@ -401,21 +402,21 @@ public class PlayState extends State {
     private void spawnCollectable(Collectible.CollectibleType type, int ammo) {
         if (type == Collectible.CollectibleType.SHOTGUN) {
             Weapon weapon = new ShotGun(camera.viewportWidth, (MathUtils.random(0, camera.viewportHeight - 64)), shotGunWeaponImg, ammo);
-            collectables.add(weapon);
+            collectibles.add(weapon);
         } else if (type == Collectible.CollectibleType.ROCKETLAUNCHER) {
             Weapon weapon = new RocketLauncher(camera.viewportWidth, (MathUtils.random(0, camera.viewportHeight - 64)), rocketLauncherWeaponImg, ammo);
-            collectables.add(weapon);
+            collectibles.add(weapon);
         }
     }
 
-    private void moveCollectable() {
-        for (Collectible collectable : collectables) {
-            collectable.moveEntity();
+    private void moveCollectible() {
+        for (Collectible collectible : collectibles) {
+            collectible.moveEntity();
         }
     }
 
-    private void checkCollectableImpact() {
-        Iterator<Collectible> it = collectables.iterator();
+    private void checkCollectibleImpact() {
+        Iterator<Collectible> it = collectibles.iterator();
         while (it.hasNext()) {
             Collectible collectible = it.next();
             if (collectible.overlaps(ship)) {

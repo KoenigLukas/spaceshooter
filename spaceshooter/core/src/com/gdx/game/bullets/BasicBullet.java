@@ -11,6 +11,7 @@ public class BasicBullet extends Bullet {
 
     @Override
     public void moveBullet() {
-        this.x += 400 * Gdx.graphics.getDeltaTime() + movSpeedFactor;
+        if(direction == BulletDirection.STRAIGHT) this.x += 400 * Gdx.graphics.getDeltaTime() + movSpeedFactor;
+        else if(direction == BulletDirection.BACK) this.x -= 400 * Gdx.graphics.getDeltaTime() + movSpeedFactor;
     }
 }
