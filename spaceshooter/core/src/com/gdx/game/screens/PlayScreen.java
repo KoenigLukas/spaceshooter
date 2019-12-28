@@ -21,6 +21,7 @@ import com.gdx.game.collectibles.weapons.Weapon;
 import com.gdx.game.enemys.BasicEnemy;
 import com.gdx.game.enemys.Enemy;
 import com.gdx.game.enemys.FirstBoss;
+import com.gdx.game.enemys.SecondBoss;
 import com.gdx.game.holster.WeaponHolster;
 import com.gdx.game.obstacles.Obstacle;
 import com.gdx.game.obstacles.SpaceRock;
@@ -43,6 +44,7 @@ public class PlayScreen extends AbstractScreen {
     private Texture rocketLauncherWeaponImg;
     private Texture satelliteImg;
     private Texture firstBossImg;
+    private Texture secondBossImg;
 
     private BitmapFont scoreBoardFont;
     private BitmapFont weaponHolsterFont;
@@ -51,6 +53,9 @@ public class PlayScreen extends AbstractScreen {
 
     private boolean firstBossSpawn;
     private boolean firstBossAlive;
+
+    private boolean secondBossSpawn;
+    private boolean secondBossAlive;
 
     private int backroundSpeed = 0;
 
@@ -76,6 +81,7 @@ public class PlayScreen extends AbstractScreen {
 
     private WeaponHolster weaponHolster;
     private FirstBoss firstBoss;
+    private SecondBoss secondBoss;
 
     public PlayScreen(Spaceshooter game) {
         super(game);
@@ -92,11 +98,17 @@ public class PlayScreen extends AbstractScreen {
         rocketLauncherWeaponImg = new Texture("rocketlauncher.png");
         satelliteImg = new Texture("satellite.png");
         firstBossImg = new Texture("FirstBoss.png");
+        secondBossImg = new Texture("SecondBoss.png");
 
         firstBoss = null;
 
         firstBossSpawn = false;
         firstBossAlive = false;
+
+        secondBoss = null;
+
+        secondBossSpawn = false;
+        secondBossAlive = false;
 
         obstacleTypes = Obstacle.ObstacleType.class.getEnumConstants();
 
@@ -412,6 +424,15 @@ public class PlayScreen extends AbstractScreen {
                             eit.remove();
                             createExplosion(tmpenemy.x, tmpenemy.y);
                             score += 10;
+                        }
+                    }
+                }else{
+                    if(tmpbullet.overlaps(ship)){
+                        try {
+                            ship.deductLife(tmpbullet.getDamage());
+                            bit.remove();
+                        }catch (Exception e){
+                            e.printStackTrace();
                         }
                     }
                 }
