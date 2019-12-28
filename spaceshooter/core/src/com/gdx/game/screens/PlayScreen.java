@@ -397,20 +397,22 @@ public class PlayScreen extends AbstractScreen {
             Iterator<Enemy> eit = enemys.iterator();
             while (eit.hasNext()) {
                 Enemy tmpenemy = eit.next();
-                if (tmpbullet.overlaps(tmpenemy)) {
-                    tmpenemy.deductLife(tmpbullet.getDamage());
-                    try {
-                        bit.remove();
-                    } catch (Exception e) {
-                        System.out.println("blos");
-                    }
-                    if (tmpenemy.getLifes() == 0) {
-                        if (tmpenemy.getType() == Enemy.EnemyType.FIRSTBOSS) {
-                            firstBossAlive = false;
+                if (tmpbullet.getDirection() != Bullet.BulletDirection.BACK){
+                    if (tmpbullet.overlaps(tmpenemy)) {
+                        tmpenemy.deductLife(tmpbullet.getDamage());
+                        try {
+                            bit.remove();
+                        } catch (Exception e) {
+                            System.out.println("blos");
                         }
-                        eit.remove();
-                        createExplosion(tmpenemy.x, tmpenemy.y);
-                        score += 10;
+                        if (tmpenemy.getLifes() == 0) {
+                            if (tmpenemy.getType() == Enemy.EnemyType.FIRSTBOSS) {
+                                firstBossAlive = false;
+                            }
+                            eit.remove();
+                            createExplosion(tmpenemy.x, tmpenemy.y);
+                            score += 10;
+                        }
                     }
                 }
             }

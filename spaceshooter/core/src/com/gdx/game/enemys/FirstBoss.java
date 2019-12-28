@@ -4,6 +4,7 @@ import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.utils.TimeUtils;
 import com.gdx.game.bullets.BasicBullet;
+import com.gdx.game.bullets.BossBullet;
 import com.gdx.game.bullets.Bullet;
 import com.gdx.game.spaceships.BasicSpaceShip;
 import com.gdx.game.spaceships.SpaceShip;
@@ -60,15 +61,16 @@ public class FirstBoss extends Enemy {
             }
         }
 
-        if(ship.y==this.y) shootBullet();   //Wenn der Boss auf der gleichen Hähe wie der Ship ist -> Shoot
-
+        for (int i = 0; i <25 ; i++) {
+            if((int)ship.y+i==(int)this.y) shootBullet();     //Wenn der Boss auf der gleichen Hähe wie der Ship ist -> Shoot  +/- 10
+        }
     }
 
     @Override
     public void shootBullet() {
-        if(TimeUtils.nanoTime()-lastBulletSpawn>3000) {
+        if(TimeUtils.nanoTime()-lastBulletSpawn>500000000) {
             lastBulletSpawn = TimeUtils.nanoTime();
-            bullets.add(new BasicBullet(this.x, this.y, bulletImg));
+            bullets.add(new BossBullet(this.x, this.y, bulletImg));
         }
     }
 

@@ -15,7 +15,7 @@ public class HomingBullet extends Bullet {
     private boolean targetaquired = false;
 
     public HomingBullet(float x, float y, BulletType type, Texture texture, LinkedList<Enemy> enemyList) {
-        super(x, y, 32, 32, 5, 0, type, texture);
+        super(x, y, 32, 32, 5, 0, type, texture, BulletDirection.STRAIGHT);
         this.enemyList = enemyList;
         enemy = null;
 

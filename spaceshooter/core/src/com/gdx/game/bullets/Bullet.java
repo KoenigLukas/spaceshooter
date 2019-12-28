@@ -12,13 +12,13 @@ public abstract class Bullet extends Rectangle {
     private BulletType type;
     protected BulletDirection direction;
 
-    public Bullet(float x, float y, float width, float height, int damage, float movSpeedFactor, BulletType type, Texture texture) {
+    public Bullet(float x, float y, float width, float height, int damage, float movSpeedFactor, BulletType type, Texture texture, BulletDirection direction) {
         super(x, y, width, height);
         this.damage = damage;
         this.movSpeedFactor = movSpeedFactor;
         this.texture = texture;
         this.type = type;
-        this.direction = BulletDirection.STRAIGHT;
+        this.direction = direction;
     }
 
     public abstract void moveBullet();
