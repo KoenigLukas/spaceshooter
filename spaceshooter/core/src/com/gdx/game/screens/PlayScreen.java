@@ -76,6 +76,7 @@ public class PlayScreen extends AbstractScreen {
     private long lastRocketLauncherSpawned;
     private long lastExplosion;
     private long lastBossSpawned;
+    private long lastsecondBossSpawned;
 
     private Integer score = 0;
 
@@ -128,6 +129,8 @@ public class PlayScreen extends AbstractScreen {
 
         lastExplosion = 0;
         lastBossSpawned = 0;
+
+        lastsecondBossSpawned = 0;
     }
 
     @Override
@@ -205,13 +208,26 @@ public class PlayScreen extends AbstractScreen {
 
 
         if (score == 500) firstBossSpawn = true;
+
+        if(score == 1500) secondBossSpawn = true;
+
+
         if (TimeUtils.millis() - lastBossSpawned > 900000000 && firstBossSpawn) {
             lastBossSpawned = TimeUtils.millis();
             spawnEnemy(Enemy.EnemyType.FIRSTBOSS);
         }
 
-        if (TimeUtils.nanoTime() - lastEnemySpawn > 1000000000 - score * 10000 && !firstBossAlive)
+        if (TimeUtils.millis() - lastsecondBossSpawned > 900000000 && secondBossSpawn) {
+            lastsecondBossSpawned = TimeUtils.millis();
+            spawnEnemy(Enemy.EnemyType.SECONDBOSS);
+        }
+
+        if (TimeUtils.nanoTime() - lastEnemySpawn > 1000000000 - score * 10000 && !firstBossAlive && !secondBossAlive)
             spawnEnemy(Enemy.EnemyType.BASIC);
+
+        if(TimeUtils.nanoTime()-lastEnemySpawn > 1000000000 - score * 100 && secondBossAlive)
+            spawnEnemy(Enemy.EnemyType.BASIC);
+
         if (TimeUtils.millis() - lastObstacleSpawn > 4000 - score * 0.002) spawnObstacle();
 
 
@@ -233,6 +249,12 @@ public class PlayScreen extends AbstractScreen {
             bullets.addAll(firstBoss.getBullets());
             moveBullets(firstBoss.getBullets());
             checkBulletImpact(firstBoss.getBullets());   //Bullets vom ersten Boss
+        }
+
+        if (secondBossAlive && secondBoss != null) {
+            bullets.addAll(secondBoss.getBullets());
+            moveBullets(secondBoss.getBullets());
+            checkBulletImpact(secondBoss.getBullets());   //Bullets vom zweiten Boss
         }
 
         moveCollectible();
@@ -398,6 +420,13 @@ public class PlayScreen extends AbstractScreen {
             firstBoss = fb;
             enemys.add(fb);
         }
+        if (type == Enemy.EnemyType.SECONDBOSS) {
+            secondBossSpawn = false;
+            secondBossAlive = true;
+            SecondBoss sb = new SecondBoss(camera.viewportWidth, (MathUtils.random(0, camera.viewportHeight - 64)), secondBossImg);
+            secondBoss = sb;
+            enemys.add(sb);
+        }
     }
 
     private void checkBulletImpact(LinkedList<Bullet> bullets) {
@@ -420,6 +449,9 @@ public class PlayScreen extends AbstractScreen {
                         if (tmpenemy.getLifes() == 0) {
                             if (tmpenemy.getType() == Enemy.EnemyType.FIRSTBOSS) {
                                 firstBossAlive = false;
+                            }
+                            if(tmpenemy.getType() == Enemy.EnemyType.SECONDBOSS){
+                                secondBossAlive = false;
                             }
                             eit.remove();
                             createExplosion(tmpenemy.x, tmpenemy.y);
