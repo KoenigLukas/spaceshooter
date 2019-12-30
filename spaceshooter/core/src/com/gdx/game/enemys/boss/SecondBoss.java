@@ -1,4 +1,4 @@
-package com.gdx.game.enemys;
+package com.gdx.game.enemys.boss;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Texture;
@@ -6,13 +6,14 @@ import com.badlogic.gdx.utils.TimeUtils;
 import com.gdx.game.bullets.BasicBullet;
 import com.gdx.game.bullets.BossBullet;
 import com.gdx.game.bullets.Bullet;
+import com.gdx.game.enemys.Enemy;
 import com.gdx.game.spaceships.BasicSpaceShip;
 import com.gdx.game.spaceships.SpaceShip;
 
 import java.util.LinkedList;
 import java.util.Random;
 
-public class FirstBoss extends Enemy {
+public class SecondBoss extends Enemy {
     private Random r;
     private int rand;
     private long lastRand;
@@ -22,7 +23,7 @@ public class FirstBoss extends Enemy {
     private long lastBulletSpawn;
     private Texture bulletImg;
 
-    public FirstBoss(float x, float y, Texture texture) {
+    public SecondBoss(float x, float y, Texture texture) {
         super(x, y, 128, 128, 0, 10, EnemyType.FIRSTBOSS, texture);
         r = new Random();
         rand=0;
