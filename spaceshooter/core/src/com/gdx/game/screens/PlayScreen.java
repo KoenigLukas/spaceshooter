@@ -225,9 +225,6 @@ public class PlayScreen extends AbstractScreen {
         if (TimeUtils.nanoTime() - lastEnemySpawn > 1000000000 - score * 10000 && !firstBossAlive && !secondBossAlive)
             spawnEnemy(Enemy.EnemyType.BASIC);
 
-        if(TimeUtils.nanoTime()-lastEnemySpawn > 1000000000 - score * 100 && secondBossAlive)
-            spawnEnemy(Enemy.EnemyType.BASIC);
-
         if (TimeUtils.millis() - lastObstacleSpawn > 4000 - score * 0.002) spawnObstacle();
 
 

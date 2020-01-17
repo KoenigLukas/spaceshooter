@@ -11,6 +11,6 @@ public class BossBullet extends Bullet {
 
     @Override
     public void moveBullet() {
-        this.x-=4*Gdx.graphics.getDeltaTime();
+        this.x-=40*Gdx.graphics.getDeltaTime();
     }
 }
